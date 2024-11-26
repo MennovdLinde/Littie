@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Bentolio - Kush Sharma",
-  description: "Building stunning web applications with Next.js and React.",
+  title: "Bentolio - Littie",
+  description: "Do you have a graphic design wish? Welcome to Littie!",
 };
 
 export default function RootLayout({
