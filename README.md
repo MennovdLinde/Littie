@@ -1,1 +1,0 @@
-![alt text](Bentolio-New.png)
