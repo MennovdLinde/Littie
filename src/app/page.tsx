@@ -88,50 +88,62 @@ export default function Home() {
     >
       <motion.header
         variants={itemVariants}
-        className="flex flex-col bg-[#d8cfbc] rounded-2xl p-4 sm:flex-row justify-between items-center mb-8"
+        className="flex flex-col bg-[#60c4e6] rounded-2xl p-4 sm:flex-row justify-between items-center mb-8"
       >
-        <h1 className="text-xl font-bold font-serif italic text-[#4A3728] ml-4 mb-4 sm:mb-0">
-          Kush Sharma
+        <h1 className="text-xl font-bold font-serif italic text-[white] ml-4 mb-4 sm:mb-0">
+          Littie!
         </h1>
         <nav className="space-x-4 mr-4">
-          <Link href="#projects" className="text-sm text-[#6B4D30] hover:text-[#4A3728]">
+          <Link
+            href="#projects"
+            className="text-sm text-[#6B4D30] hover:text-[white]"
+          >
             PROJECTS
           </Link>
-          <Link href="#about" className="text-sm text-[#6B4D30] hover:text-[#4A3728]">
+          <Link
+            href="#about"
+            className="text-sm text-[#6B4D30] hover:text-[white]"
+          >
             ABOUT
           </Link>
-          <Link href="#contact" className="text-sm text-[#6B4D30] hover:text-[#4A3728]">
+          <Link
+            href="#contact"
+            className="text-sm text-[#6B4D30] hover:text-[white]"
+          >
             CONTACT
           </Link>
         </nav>
       </motion.header>
-  
+
       <div className="grid grid-cols-12 gap-4">
         <motion.div
           variants={itemVariants}
-          className="bg-[#d8cfbc] p-6 rounded-md col-span-12 md:col-span-6 lg:col-span-4 flex flex-col justify-evenly scroll-trigger"
+          className="bg-[#60c4e6] p-6 rounded-md col-span-12 md:col-span-6 lg:col-span-4 flex flex-col justify-evenly scroll-trigger"
         >
-          <motion.div variants={itemVariants} className="flex justify-end items-center">
-            <Image
+          <motion.div
+            variants={itemVariants}
+            className="flex justify-end items-center"
+          >
+            {/* <Image
               src="/coffee.png"
               alt="coffee"
               width={150}
               height={150}
               className="object-cover h-auto mb-4 mr-4 hover:scale-110 transition-all duration-300 ease-in-out"
               priority
-            />
+            /> */}
           </motion.div>
-          <h2 className="md:text-3xl text-2xl lg:text-4xl font-bold font-serif mb-2 leading-tight text-[#4A3728]">
-            Building Stunning Web Applications with <span className="italic underline">Next.js</span> that inspire and captivate users.
+          <h2 className="md:text-3xl text-2xl lg:text-4xl font-bold font-serif mb-2 leading-tight text-[white]">
+            Do you have a graphic design wish? Welcome to Littie!
           </h2>
         </motion.div>
-  
+
         <div
           ref={mainImageRef}
-          className="bg-[#57544a] rounded-md flex items-end justify-center main_image col-span-12 md:col-span-5 lg:col-span-4"
+          className="bg-[#2a499b] rounded-md flex items-end justify-center main_image col-span-12 md:col-span-5 lg:col-span-4"
         >
           <Image
-            src="/bentolio-avatar.png"
+            src="/Lot.png"
             alt="Kush Sharma"
             width={250}
             height={250}
@@ -139,20 +151,28 @@ export default function Home() {
             priority
           />
         </div>
-  
+
         <motion.div
           variants={itemVariants}
-          className="bg-[#d8cfbc] p-4 rounded-md flex flex-col justify-evenly scroll-trigger col-span-12 md:col-span-7 lg:col-span-4"
+          className="bg-[#f0ce17] p-4 rounded-md flex flex-col justify-evenly scroll-trigger col-span-12 md:col-span-7 lg:col-span-4"
         >
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-2xl font-semibold text-[#4A3728]">Work</h3>
-            <motion.div whileHover={{ scale: 1.2, rotate: 20 }} whileTap={{ scale: 0.9 }}>
+            <h3 className="text-2xl font-semibold text-[white]">
+              Illustration
+            </h3>
+            <motion.div
+              whileHover={{ scale: 1.2, rotate: 20 }}
+              whileTap={{ scale: 0.9 }}
+            >
               <Link href="https://visionforge.vercel.app">
-                <ArrowUpRight className="text-[#6B4D30] cursor-pointer" size={24} />
+                <ArrowUpRight
+                  className="text-[#6B4D30] cursor-pointer"
+                  size={24}
+                />
               </Link>
             </motion.div>
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col">
             <div className="relative overflow-hidden rounded-lg mb-4">
               <Image
                 src="/work.jpg"
@@ -163,41 +183,51 @@ export default function Home() {
                 priority
               />
             </div>
-            <div className="flex flex-col items-start p-2 px-4">
-              <h3 className="text-2xl font-semibold text-[#4A3728] mb-2 text-left">Vision Forge</h3>
-              <p className="text-sm font-thin text-left text-black">
-                VisionForge is a dynamic project, allows users to generate stunning images for free using prompts, with unlimited generations available.
-              </p>
+            <div className="flex flex-col items-left p-2">
+              <h3 className="text-2xl font-semibold text-[white] mb-2 text-left">
+                Graphic Design
+              </h3>
+              <h3 className="text-2xl font-semibold text-[white] mb-2 text-left">
+                Logo Design
+              </h3>
             </div>
           </div>
         </motion.div>
-  
+
         <motion.div
           variants={itemVariants}
-          className="bg-[#d8cfbc] p-6 rounded-md scroll-trigger col-span-12 md:col-span-6 lg:col-span-6 flex justify-between gap-4 items-center"
+          className="bg-[#60c4e6] p-6 rounded-md scroll-trigger col-span-12 md:col-span-6 lg:col-span-6 flex justify-between gap-4 items-center"
         >
-          <Image
+          {/* <Image
             src="/leaf.png"
             alt="leaf-img"
             className="object-cover h-auto leaf-image"
             width={100}
             height={100}
             priority
-          />
-          <p className="text-md font-thin text-black">
-            A dedicated and driven developer with a strong passion for creating meaningful digital experiences. Known for a problem-solving mindset, attention to detail, and a genuine curiosity to learn and grow. Always ready to tackle challenges with persistence and a commitment to delivering quality results.
-          </p>
+          /> */}
+          <h3 className="text-4xl md:text-5xl mt-4 font-sans font-semibold text-[#ffecdd]">
+            Portfolio
+          </h3>
         </motion.div>
-  
+
         <motion.div
           variants={itemVariants}
-          className="bg-[#57544a] p-6 rounded-md scroll-trigger col-span-12 md:col-span-6 lg:col-span-3 flex flex-col justify-between"
+          className="bg-[#2a499b] p-6 rounded-md scroll-trigger col-span-12 md:col-span-6 lg:col-span-3 flex flex-col justify-between"
         >
           <div className="flex justify-between items-center">
-            <h3 className="text-lg font-thin mb-2 text-[#ffddc3]">Have some questions?</h3>
-            <motion.div whileHover={{ scale: 1.2, rotate: 20 }} whileTap={{ scale: 0.9 }}>
+            <h3 className="text-lg font-thin mb-2 text-[#ffddc3]">
+              Have some questions?
+            </h3>
+            <motion.div
+              whileHover={{ scale: 1.2, rotate: 20 }}
+              whileTap={{ scale: 0.9 }}
+            >
               <Link href="mailto:fullstack.kush@gmail.com">
-                <ArrowUpRight className="mb-2 text-[#D4C6B8] cursor-pointer" size={20} />
+                <ArrowUpRight
+                  className="mb-2 text-[#D4C6B8] cursor-pointer"
+                  size={20}
+                />
               </Link>
             </motion.div>
           </div>
@@ -205,19 +235,22 @@ export default function Home() {
             Contact me
           </h3>
         </motion.div>
-  
+
         <motion.div
           variants={itemVariants}
-          className="bg-[#d8cfbc] p-4 rounded-md flex justify-evenly items-center scroll-trigger col-span-12 md:col-span-6 lg:col-span-3"
+          className="bg-[#60c4e6] p-4 rounded-md flex justify-evenly items-center scroll-trigger col-span-12 md:col-span-6 lg:col-span-3"
         >
           {[
-            { href: 'https://www.linkedin.com/in/kushsharma738', Icon: Linkedin },
-            { href: 'https://github.com/Kushhhhhhhh', Icon: Github },
-            { href: 'mailto:fullstack.kush@gmail.com', Icon: Mail },
+            {
+              href: "https://www.linkedin.com/in/kushsharma738",
+              Icon: Linkedin,
+            },
+            { href: "https://github.com/Kushhhhhhhh", Icon: Github },
+            { href: "mailto:fullstack.kush@gmail.com", Icon: Mail },
           ].map(({ href, Icon }) => (
             <Link key={href} href={href}>
               <motion.div
-                className="text-[#6B4D30] hover:text-[#4A3728]"
+                className="text-[#6B4D30] hover:text-[white]"
                 whileHover={{ scale: 1.2, rotate: 10 }}
                 whileTap={{ scale: 0.9 }}
               >
