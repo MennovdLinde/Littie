@@ -17,20 +17,35 @@ export default function Home() {
   const controls = useAnimation();
 
   useEffect(() => {
-    gsap.fromTo(
-      mainImageRef.current,
-      { opacity: 1, scale: 1.5, x: -50, y: 50 },
-      {
-        opacity: 1,
-        scale: 1,
-        x: 0,
-        y: 0,
-        duration: 1.5,
-        ease: "expo.out",
-        delay: 1, // Adds a slight delay for dramatic effect
-      }
-    );
+    const isSmallScreen = window.matchMedia("(max-width: 768px)").matches;
 
+    if (isSmallScreen) {
+      gsap.fromTo(
+        mainImageRef.current,
+        { scale: 0.8, y: -200 }, // Smaller initial scale and offsets
+        {
+          scale: 1,
+          y: 0,
+          duration: 1,
+          ease: "expo.out",
+          delay: 0.5, // Shorter delay for small screens
+        }
+      );
+    } else {
+      gsap.fromTo(
+        mainImageRef.current,
+        { opacity: 1, scale: 1.5, x: -50, y: 50 },
+        {
+          opacity: 1,
+          scale: 1,
+          x: 0,
+          y: 0,
+          duration: 1.5,
+          ease: "expo.out",
+          delay: 1, // Adds a slight delay for dramatic effect
+        }
+      );
+    }
     controls.start("visible");
   }, [controls]);
 
