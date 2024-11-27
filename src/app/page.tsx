@@ -19,28 +19,16 @@ export default function Home() {
   useEffect(() => {
     gsap.fromTo(
       mainImageRef.current,
-      { opacity: 0, scale: 0.8 },
-      { opacity: 1, scale: 1, duration: 2, ease: "power3.out" }
-    );
-
-    gsap.utils.toArray('.scroll-trigger').forEach((element) => {
-      if (element instanceof Element) {
-        gsap.fromTo(element,
-          { y: 50, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            scrollTrigger: {
-              trigger: element,
-              start: "top bottom-=100",
-              end: "bottom top+=100",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
+      { opacity: 0, scale: 0.9, x: -50 },
+      {
+        opacity: 1,
+        scale: 1,
+        x: 0,
+        duration: 1.5,
+        ease: "expo.out",
+        delay: 0.5, // Adds a slight delay for dramatic effect
       }
-    });
+    );
 
     controls.start("visible");
   }, [controls]);
@@ -48,35 +36,41 @@ export default function Home() {
   useEffect(() => {
     gsap.to(".leaf-image", {
       y: -10,
-      repeat: -1,  
-      yoyo: true,  
-      ease: "power1.inOut",  
-      duration: 2, 
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+      duration: 2,
     });
   }, []);
 
-  const containerVariants = useMemo(() => ({
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 1,
-        staggerChildren: 0.2,
+  const containerVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: {
+          delayChildren: 1,
+          staggerChildren: 0.2,
+        },
       },
-    },
-  }), []);
+    }),
+    []
+  );
 
-  const itemVariants = useMemo(() => ({
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
+  const itemVariants = useMemo(
+    () => ({
+      hidden: { scale: 0.8, opacity: 0 },
+      visible: {
+        scale: 1,
+        opacity: 1,
+        transition: {
+          duration: 0.5,
+          ease: "easeOut",
+        },
       },
-    },
-  }), []);
+    }),
+    []
+  );
 
   return (
     <motion.div
@@ -88,7 +82,7 @@ export default function Home() {
     >
       <motion.header
         variants={itemVariants}
-        className="flex flex-col bg-[#60c4e6] rounded-2xl p-4 sm:flex-row justify-between items-center mb-8"
+        className="flex flex-col bg-[#60c4e6] rounded-2xl p-4 sm:flex-row justify-between items-center mb-3"
       >
         <h1 className="text-xl font-bold font-serif italic text-[white] ml-4 mb-4 sm:mb-0">
           Littie!
@@ -118,7 +112,7 @@ export default function Home() {
       <div className="grid grid-cols-12 gap-4">
         <motion.div
           variants={itemVariants}
-          className="bg-[#60c4e6] p-6 rounded-md col-span-12 md:col-span-6 lg:col-span-4 flex flex-col justify-evenly scroll-trigger"
+          className="bg-[#60c4e6] p-6 rounded-2xl col-span-12 md:col-span-6 lg:col-span-5 flex flex-col justify-evenly row-span-1"
         >
           <motion.div
             variants={itemVariants}
@@ -140,11 +134,11 @@ export default function Home() {
 
         <div
           ref={mainImageRef}
-          className="bg-[#2a499b] rounded-md flex items-end justify-center main_image col-span-12 md:col-span-5 lg:col-span-4"
+          className="bg-[#2a499b] rounded-2xl flex items-end justify-center main_image col-span-12 md:col-span-5 lg:col-span-3 row-span-1"
         >
           <Image
             src="/Lot.png"
-            alt="Kush Sharma"
+            alt="Lot"
             width={250}
             height={250}
             className="max-w-[240px] h-auto object-cover pt-12"
@@ -154,7 +148,7 @@ export default function Home() {
 
         <motion.div
           variants={itemVariants}
-          className="bg-[#f0ce17] p-4 rounded-md flex flex-col justify-evenly scroll-trigger col-span-12 md:col-span-7 lg:col-span-4"
+          className="bg-[#f0ce17] p-4 rounded-2xl flex flex-col justify-evenly col-span-12 md:col-span-7 lg:col-span-4 row-span-2"
         >
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-2xl font-semibold text-[white]">
@@ -173,7 +167,7 @@ export default function Home() {
             </motion.div>
           </div>
           <div className="flex flex-col">
-            <div className="relative overflow-hidden rounded-lg mb-4">
+            <div className="relative overflow-hidden rounded-2xl mb-4">
               <Image
                 src="/work.jpg"
                 alt="Vision Forge Project"
@@ -196,24 +190,7 @@ export default function Home() {
 
         <motion.div
           variants={itemVariants}
-          className="bg-[#60c4e6] p-6 rounded-md scroll-trigger col-span-12 md:col-span-6 lg:col-span-6 flex justify-between gap-4 items-center"
-        >
-          {/* <Image
-            src="/leaf.png"
-            alt="leaf-img"
-            className="object-cover h-auto leaf-image"
-            width={100}
-            height={100}
-            priority
-          /> */}
-          <h3 className="text-4xl md:text-5xl mt-4 font-sans font-semibold text-[#ffecdd]">
-            Portfolio
-          </h3>
-        </motion.div>
-
-        <motion.div
-          variants={itemVariants}
-          className="bg-[#2a499b] p-6 rounded-md scroll-trigger col-span-12 md:col-span-6 lg:col-span-3 flex flex-col justify-between"
+          className="bg-[#2a499b] bg-[#60c4e6] p-6 rounded-2xl col-span-12 md:col-span-6 lg:col-span-4 flex flex-col justify-between lg:h-60"
         >
           <div className="flex justify-between items-center">
             <h3 className="text-lg font-thin mb-2 text-[#ffddc3]">
@@ -238,7 +215,7 @@ export default function Home() {
 
         <motion.div
           variants={itemVariants}
-          className="bg-[#60c4e6] p-4 rounded-md flex justify-evenly items-center scroll-trigger col-span-12 md:col-span-6 lg:col-span-3"
+          className="bg-[#60c4e6] p-4 rounded-2xl flex justify-evenly items-center col-span-12 md:col-span-6 lg:col-span-4"
         >
           {[
             {
