@@ -19,14 +19,15 @@ export default function Home() {
   useEffect(() => {
     gsap.fromTo(
       mainImageRef.current,
-      { opacity: 0, scale: 0.9, x: -50 },
+      { opacity: 1, scale: 1.5, x: -50, y: 50 },
       {
         opacity: 1,
         scale: 1,
         x: 0,
+        y: 0,
         duration: 1.5,
         ease: "expo.out",
-        delay: 0.5, // Adds a slight delay for dramatic effect
+        delay: 1, // Adds a slight delay for dramatic effect
       }
     );
 
