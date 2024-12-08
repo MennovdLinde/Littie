@@ -3,18 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Linkedin, Github, Mail } from 'lucide-react';
-import { useEffect, useRef, useMemo } from 'react';
-import { motion, useAnimation } from 'framer-motion';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useEffect, useRef, useMemo, useState } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { gsap } from "gsap";
 
 export default function Home() {
-
   const mainImageRef = useRef(null);
   const scrollRef = useRef(null);
   const controls = useAnimation();
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const isSmallScreen = window.matchMedia("(max-width: 768px)").matches;
@@ -48,16 +45,6 @@ export default function Home() {
     }
     controls.start("visible");
   }, [controls]);
-
-  useEffect(() => {
-    gsap.to(".leaf-image", {
-      y: -10,
-      repeat: -1,
-      yoyo: true,
-      ease: "power1.inOut",
-      duration: 2,
-    });
-  }, []);
 
   const containerVariants = useMemo(
     () => ({
@@ -133,16 +120,7 @@ export default function Home() {
           <motion.div
             variants={itemVariants}
             className="flex justify-end items-center"
-          >
-            {/* <Image
-              src="/coffee.png"
-              alt="coffee"
-              width={150}
-              height={150}
-              className="object-cover h-auto mb-4 mr-4 hover:scale-110 transition-all duration-300 ease-in-out"
-              priority
-            /> */}
-          </motion.div>
+          ></motion.div>
           <h2 className="md:text-3xl text-2xl lg:text-4xl font-bold font-serif mb-2 leading-tight text-[white]">
             Do you have a graphic design wish? Welcome to Littie!
           </h2>
@@ -166,47 +144,61 @@ export default function Home() {
           variants={itemVariants}
           className="bg-[#f0ce17] p-4 rounded-2xl flex flex-col justify-evenly col-span-12 md:col-span-7 lg:col-span-4 row-span-2"
         >
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-2xl font-semibold text-[white]">
-              Illustration
-            </h3>
+          <div className="interactive-div">
             <motion.div
-              whileHover={{ scale: 1.2, rotate: 20 }}
-              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsOpen(!isOpen)}
+              className="div-header"
             >
-              <Link href="https://visionforge.vercel.app">
-                <ArrowUpRight
-                  className="text-[#6B4D30] cursor-pointer"
-                  size={24}
-                />
-              </Link>
+              <h2>Illustration</h2>
+              <p>Graphic Design, Logo Design</p>
             </motion.div>
+            {isOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="div-content"
+              >
+                <p>
+                  Additional details about the illustration go here. You can add
+                  links or other interactive elements.
+                </p>
+              </motion.div>
+            )}
           </div>
-          <div className="flex flex-col">
-            <div className="relative overflow-hidden rounded-2xl mb-4">
-              <Image
-                src="/work.jpg"
-                alt="Vision Forge Project"
-                width={400}
-                height={250}
-                className="object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"
-                priority
-              />
-            </div>
-            <div className="flex flex-col items-left p-2">
-              <h3 className="text-2xl font-semibold text-[white] mb-2 text-left">
-                Graphic Design
-              </h3>
-              <h3 className="text-2xl font-semibold text-[white] mb-2 text-left">
-                Logo Design
-              </h3>
-            </div>
+          <div className="interactive-div">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsOpen(!isOpen)}
+              className="div-header"
+            >
+              <h2>Illustration</h2>
+              <p>Graphic Design, Logo Design</p>
+            </motion.div>
+            {isOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="div-content"
+              >
+                <p>
+                  Additional details about the illustration go here. You can add
+                  links or other interactive elements.
+                </p>
+              </motion.div>
+            )}
           </div>
         </motion.div>
 
         <motion.div
           variants={itemVariants}
-          className="bg-[#2a499b] bg-[#60c4e6] p-6 rounded-2xl col-span-12 md:col-span-6 lg:col-span-4 flex flex-col justify-between lg:h-60"
+          className="bg-[#60c4e6] p-6 rounded-2xl col-span-12 md:col-span-6 lg:col-span-4 flex flex-col justify-between lg:h-60"
         >
           <div className="flex justify-between items-center">
             <h3 className="text-lg font-thin mb-2 text-[#ffddc3]">
@@ -254,5 +246,5 @@ export default function Home() {
         </motion.div>
       </div>
     </motion.div>
-  );  
+  );
 }
