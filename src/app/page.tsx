@@ -13,7 +13,7 @@ export default function Home() {
   const mainImageRef = useRef(null);
   const scrollRef = useRef(null);
   const controls = useAnimation();
-  const [openDivIndex, setOpenDivIndex] = useState(0);
+  const [openDivIndex, setOpenDivIndex] = useState<number | null>(0);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   useEffect(() => {
@@ -80,7 +80,7 @@ export default function Home() {
   const toggleDiv = (index: number) => {
     setOpenDivIndex(openDivIndex === index ? null : index); // Toggle div state
   };
-  
+
   const handlePopupOpen = () => {
     setIsPopupOpen(true);
   };
