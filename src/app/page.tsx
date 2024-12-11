@@ -392,8 +392,8 @@ export default function Home() {
           className="bg-[#60c4e6] p-6 rounded-2xl col-span-12 md:col-span-6 lg:col-span-4 flex flex-col justify-between row-span-1"
         >
           <div className="flex justify-between items-center">
-            <h3 className="text-lg font-thin mb-2 text-[#ffddc3]">
-              Have some questions?
+            <h3 className="text-4xl md:text-5xl mt-4 font-sans font-semibold text-[#ffecdd]">
+              Contact me
             </h3>
             <motion.div
               whileHover={{ scale: 1.2, rotate: 20 }}
@@ -407,9 +407,6 @@ export default function Home() {
               </Link>
             </motion.div>
           </div>
-          <h3 className="text-4xl md:text-5xl mt-4 font-sans font-semibold text-[#ffecdd]">
-            Contact me
-          </h3>
           <div className="flex justify-evenly items-center col-span-12">
             {[
               {
