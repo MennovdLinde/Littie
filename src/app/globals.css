@@ -45,8 +45,8 @@ body {
   cursor: pointer;
   width: 100%;
   margin: auto;
-  border: #6B4D30 1px solid;
-  border-radius: 10px;
+  border-bottom: #6B4D30 1px solid;
+
 }
 
 .interactive-div:hover {
