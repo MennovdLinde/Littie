@@ -196,8 +196,8 @@ export default function Home() {
                           <Image
                             src="/Opdracht-1a-min.jpg"
                             alt="1a"
-                            width={100}
-                            height={70}
+                            width={80}
+                            height={80}
                             className="shadow-md"
                           />
                         </div>
