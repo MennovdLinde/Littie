@@ -158,7 +158,7 @@ export default function Home() {
 
         <motion.div
           variants={itemVariants}
-          className="bg-[#f0ce17] p-4 rounded-2xl flex flex-col justify-evenly col-span-12 md:col-span-7 lg:col-span-4 row-span-2 max-h-[100vh] lg:max-h-[88vh] overflow-y-auto hide-scrollbar "
+          className="bg-[#f0ce17] p-4 rounded-2xl flex flex-col justify-evenly col-span-12 md:col-span-7 lg:col-span-4 row-span-2 max-h-[88vh] overflow-y-auto hide-scrollbar "
         >
           <div className="interactive-div">
             <motion.div
@@ -188,7 +188,7 @@ export default function Home() {
                       className="shadow-md"
                     />
                     <Image
-                      src="/Opdracht-1b-min.JPG"
+                      src="/Opdracht-1b-min.jpg"
                       alt="1b"
                       width={100}
                       height={100}
@@ -392,7 +392,7 @@ export default function Home() {
           className="bg-[#60c4e6] p-6 rounded-2xl col-span-12 md:col-span-6 lg:col-span-4 flex flex-col justify-between row-span-1"
         >
           <div className="flex justify-between items-center">
-            <h3 className="text-4xl md:text-5xl mt-4 font-sans font-semibold text-[#ffecdd]">
+            <h3 className="text-4xl md:text-5xl mt-4 font-sans font-semibold text-[white]">
               Contact me
             </h3>
             <motion.div
