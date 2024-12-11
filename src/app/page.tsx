@@ -8,6 +8,10 @@ import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import Popup from "./popup";
 import "./globals.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 export default function Home() {
   const mainImageRef = useRef(null);
@@ -174,12 +178,67 @@ export default function Home() {
               {openDivIndex === 0 && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "fit-content", opacity: 1 }}
+                  animate={{ height: 140, opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
                   className="div-content"
                 >
-                  <div className="flex items-center justify-between space-x-4">
+                  <div className="block md:hidden">
+                    <Swiper
+                      spaceBetween={10}
+                      slidesPerView={1}
+                      navigation
+                      pagination={{ clickable: true }}
+                      className="flex justify-center items-center"
+                    >
+                      <SwiperSlide>
+                        <div className="flex justify-center items-center h-full">
+                          <Image
+                            src="/Opdracht-1a-min.jpg"
+                            alt="1a"
+                            width={100}
+                            height={100}
+                            className="shadow-md"
+                          />
+                        </div>
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <div className="flex justify-center items-center h-full">
+                          <Image
+                            src="/Opdracht-1b-min.JPG"
+                            alt="1b"
+                            width={100}
+                            height={100}
+                            className="shadow-md"
+                          />
+                        </div>
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <div className="flex justify-center items-center h-full">
+                          <Image
+                            src="/Opdracht-1c-min.jpg"
+                            alt="1c"
+                            width={100}
+                            height={100}
+                            className="shadow-md"
+                          />
+                        </div>
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <div className="flex justify-center items-center h-full">
+                          <Image
+                            src="/Opdracht-1d-min.jpg"
+                            alt="1d"
+                            width={100}
+                            height={100}
+                            className="shadow-md"
+                          />
+                        </div>
+                      </SwiperSlide>
+                    </Swiper>
+                  </div>
+
+                  <div className="hidden md:flex items-center justify-between space-x-4">
                     <Image
                       src="/Opdracht-1a-min.jpg"
                       alt="1a"
@@ -228,12 +287,56 @@ export default function Home() {
               {openDivIndex === 1 && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "fit-content", opacity: 1 }}
+                  animate={{ height: 140, opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.5 }}
                   className="div-content"
                 >
-                  <div className="flex items-center justify-evenly">
+                  <div className="block md:hidden">
+                    <Swiper
+                      spaceBetween={10}
+                      slidesPerView={1}
+                      navigation
+                      pagination={{ clickable: true }}
+                      className="flex justify-center items-center"
+                    >
+                      <SwiperSlide>
+                        <div className="flex justify-center items-center h-full">
+                          <Image
+                            src="/Opdracht-2a-min.jpg"
+                            alt="2a"
+                            width={100}
+                            height={100}
+                            className="shadow-md"
+                          />
+                        </div>
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <div className="flex justify-center items-center h-full">
+                          <Image
+                            src="/Opdracht-2b-min.png"
+                            alt="2b"
+                            width={100}
+                            height={100}
+                            className="shadow-md"
+                          />
+                        </div>
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <div className="flex justify-center items-center h-full">
+                          <Image
+                            src="/Opdracht-2c-min.png"
+                            alt="2c"
+                            width={100}
+                            height={100}
+                            className="shadow-md"
+                          />
+                        </div>
+                      </SwiperSlide>
+                    </Swiper>
+                  </div>
+
+                  <div className="hidden md:flex items-center justify-evenly">
                     <Image
                       src="/Opdracht-2a-min.jpg"
                       alt="2a"
@@ -275,12 +378,56 @@ export default function Home() {
               {openDivIndex === 2 && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "fit-content", opacity: 1 }}
+                  animate={{ height: 140, opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.5 }}
                   className="div-content"
                 >
-                  <div className="flex items-center justify-evenly">
+                  <div className="block md:hidden">
+                    <Swiper
+                      spaceBetween={10}
+                      slidesPerView={1}
+                      navigation
+                      pagination={{ clickable: true }}
+                      className="flex justify-center items-center"
+                    >
+                      <SwiperSlide>
+                        <div className="flex justify-center items-center h-full">
+                          <Image
+                            src="/Opdracht-3a-min.png"
+                            alt="3a"
+                            width={100}
+                            height={100}
+                            className="shadow-md"
+                          />
+                        </div>
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <div className="flex justify-center items-center h-full">
+                          <Image
+                            src="/Opdracht-3b-min.png"
+                            alt="3b"
+                            width={100}
+                            height={100}
+                            className="shadow-md"
+                          />
+                        </div>
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <div className="flex justify-center items-center h-full">
+                          <Image
+                            src="/Opdracht-3c-min.png"
+                            alt="3c"
+                            width={100}
+                            height={100}
+                            className="shadow-md"
+                          />
+                        </div>
+                      </SwiperSlide>
+                    </Swiper>
+                  </div>
+
+                  <div className="hidden md:flex items-center justify-evenly">
                     <Image
                       src="/Opdracht-3a-min.png"
                       alt="3a"
@@ -322,12 +469,67 @@ export default function Home() {
               {openDivIndex === 3 && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "fit-content", opacity: 1 }}
+                  animate={{ height: 140, opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.5 }}
                   className="div-content"
                 >
-                  <div className="flex items-center justify-between space-x-4">
+                  <div className="block md:hidden">
+                    <Swiper
+                      spaceBetween={10}
+                      slidesPerView={1}
+                      navigation
+                      pagination={{ clickable: true }}
+                      className="flex justify-center items-center"
+                    >
+                      <SwiperSlide>
+                        <div className="flex justify-center items-center h-full">
+                          <Image
+                            src="/Opdracht-4a-min.png"
+                            alt="4a"
+                            width={100}
+                            height={100}
+                            className="shadow-md"
+                          />
+                        </div>
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <div className="flex justify-center items-center h-full">
+                          <Image
+                            src="/Opdracht-4b-min.png"
+                            alt="4b"
+                            width={100}
+                            height={100}
+                            className="shadow-md"
+                          />
+                        </div>
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <div className="flex justify-center items-center h-full">
+                          <Image
+                            src="/Opdracht-4c-min.png"
+                            alt="4c"
+                            width={100}
+                            height={100}
+                            className="shadow-md"
+                          />
+                        </div>
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <div className="flex justify-center items-center h-full">
+                          <Image
+                            src="/Opdracht-4d-min.png"
+                            alt="4d"
+                            width={100}
+                            height={100}
+                            className="shadow-md"
+                          />
+                        </div>
+                      </SwiperSlide>
+                    </Swiper>
+                  </div>
+
+                  <div className="hidden md:flex items-center justify-between space-x-4">
                     <Image
                       src="/Opdracht-4a-min.png"
                       alt="4a"
