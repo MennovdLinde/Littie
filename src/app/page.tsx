@@ -179,7 +179,7 @@ export default function Home() {
                   transition={{ duration: 0.5, ease: "easeOut" }}
                   className="div-content"
                 >
-                  <div className="grid grid-cols-2 items-center justify-items-center md:flex md:items-center md:justify-between md:space-x-4 gap-2">
+                  <div className="flex items-center justify-between space-x-4">
                     <Image
                       src="/Opdracht-1a-min.jpg"
                       alt="1a"
@@ -327,7 +327,7 @@ export default function Home() {
                   transition={{ duration: 0.5 }}
                   className="div-content"
                 >
-                  <div className="grid grid-cols-2 items-center justify-items-center md:flex md:items-center md:justify-between md:space-x-4 gap-2">
+                  <div className="flex items-center justify-between space-x-4">
                     <Image
                       src="/Opdracht-4a-min.png"
                       alt="4a"
