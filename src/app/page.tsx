@@ -158,7 +158,7 @@ export default function Home() {
 
         <motion.div
           variants={itemVariants}
-          className="bg-[#f0ce17] p-4 rounded-2xl flex flex-col justify-evenly col-span-12 md:col-span-7 lg:col-span-4 row-span-2 overflow-y-auto hide-scrollbar max-h-[88vh]"
+          className="bg-[#f0ce17] p-4 rounded-2xl flex flex-col justify-evenly col-span-12 md:col-span-7 lg:col-span-4 row-span-2 max-h-[100vh] lg:max-h-[88vh] overflow-y-auto hide-scrollbar "
         >
           <div className="interactive-div">
             <motion.div
@@ -327,7 +327,7 @@ export default function Home() {
                   transition={{ duration: 0.5 }}
                   className="div-content"
                 >
-                  <div className="flex items-center justify-between space-x-4">
+                  <div className="grid grid-cols-2 items-center justify-items-center md:flex md:items-center md:justify-between md:space-x-4 gap-2">
                     <Image
                       src="/Opdracht-4a-min.png"
                       alt="4a"
