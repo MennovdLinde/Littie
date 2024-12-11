@@ -174,7 +174,7 @@ export default function Home() {
               {openDivIndex === 0 && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 140, opacity: 1 }}
+                  animate={{ height: "fit-content", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
                   className="div-content"
@@ -228,7 +228,7 @@ export default function Home() {
               {openDivIndex === 1 && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 140, opacity: 1 }}
+                  animate={{ height: "fit-content", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.5 }}
                   className="div-content"
@@ -275,7 +275,7 @@ export default function Home() {
               {openDivIndex === 2 && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 140, opacity: 1 }}
+                  animate={{ height: "fit-content", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.5 }}
                   className="div-content"
@@ -322,7 +322,7 @@ export default function Home() {
               {openDivIndex === 3 && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 140, opacity: 1 }}
+                  animate={{ height: "fit-content", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.5 }}
                   className="div-content"
@@ -368,19 +368,19 @@ export default function Home() {
           className="bg-[#60c4e6] p-6 rounded-2xl flex flex-col justify-between col-span-12 md:col-span-6 lg:col-span-4"
         >
           <div className="flex justify-between items-center">
-            <h3 className="text-2xl font-bold">Portofolio</h3>
+            <h3 className="text-2xl font-bold text-[white]">Portofolio</h3>
             <motion.div
               whileHover={{ scale: 1.2, rotate: 20 }}
               whileTap={{ scale: 0.9 }}
               onClick={handlePopupOpen} // Open the popup on click
             >
               <ArrowUpRight
-                className="mb-2 text-[#D4C6B8] cursor-pointer"
+                className="mb-2 text-[white] cursor-pointer"
                 size={30}
               />
             </motion.div>
           </div>
-          <h3 className="font-bold">
+          <h3 className="font-bold text-[white]">
             Littie is a talented graphic designer blending creativity with
             precision. She excels in logo design, brand identity, and digital
             illustrations, creating visually captivating and meaningful designs.
@@ -401,7 +401,7 @@ export default function Home() {
             >
               <Link href="mailto:lot@vanegdom.net">
                 <ArrowUpRight
-                  className="mb-2 text-[#D4C6B8] cursor-pointer"
+                  className="mb-2 text-[white] cursor-pointer"
                   size={30}
                 />
               </Link>
