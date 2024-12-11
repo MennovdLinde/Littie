@@ -236,21 +236,21 @@ export default function Home() {
                   <div className="flex items-center justify-evenly">
                     <Image
                       src="/Opdracht-2a-min.jpg"
-                      alt="1a"
+                      alt="2a"
                       width={100}
                       height={100}
                       className="shadow-md mx-2"
                     />
                     <Image
                       src="/Opdracht-2b-min.png"
-                      alt="1b"
+                      alt="2b"
                       width={100}
                       height={100}
                       className="shadow-md mx-2"
                     />
                     <Image
                       src="/Opdracht-2c-min.png"
-                      alt="1c"
+                      alt="2c"
                       width={100}
                       height={100}
                       className="shadow-md mx-2"
@@ -283,21 +283,21 @@ export default function Home() {
                   <div className="flex items-center justify-evenly">
                     <Image
                       src="/Opdracht-3a-min.png"
-                      alt="1a"
+                      alt="3a"
                       width={100}
                       height={100}
                       className="shadow-md mx-2"
                     />
                     <Image
                       src="/Opdracht-3b-min.png"
-                      alt="1b"
+                      alt="3b"
                       width={100}
                       height={100}
                       className="shadow-md mx-2"
                     />
                     <Image
                       src="/Opdracht-3c-min.png"
-                      alt="1c"
+                      alt="3c"
                       width={100}
                       height={100}
                       className="shadow-md mx-2"
