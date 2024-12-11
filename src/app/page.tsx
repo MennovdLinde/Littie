@@ -77,10 +77,10 @@ export default function Home() {
     []
   );
 
-  const toggleDiv = (index) => {
+  const toggleDiv = (index: number) => {
     setOpenDivIndex(openDivIndex === index ? null : index); // Toggle div state
   };
-
+  
   const handlePopupOpen = () => {
     setIsPopupOpen(true);
   };
