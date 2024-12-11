@@ -179,7 +179,7 @@ export default function Home() {
                   transition={{ duration: 0.5, ease: "easeOut" }}
                   className="div-content"
                 >
-                  <div className="flex items-center justify-between space-x-4">
+                  <div className="grid grid-cols-2 items-center justify-items-center md:flex md:items-center md:justify-between md:space-x-4 gap-2">
                     <Image
                       src="/Opdracht-1a-min.jpg"
                       alt="1a"
@@ -239,21 +239,21 @@ export default function Home() {
                       alt="1a"
                       width={100}
                       height={100}
-                      className="shadow-md"
+                      className="shadow-md mx-2"
                     />
                     <Image
                       src="/Opdracht-2b-min.png"
                       alt="1b"
                       width={100}
                       height={100}
-                      className="shadow-md"
+                      className="shadow-md mx-2"
                     />
                     <Image
                       src="/Opdracht-2c-min.png"
                       alt="1c"
                       width={100}
                       height={100}
-                      className="shadow-md"
+                      className="shadow-md mx-2"
                     />
                   </div>
                 </motion.div>
@@ -286,21 +286,21 @@ export default function Home() {
                       alt="1a"
                       width={100}
                       height={100}
-                      className="shadow-md"
+                      className="shadow-md mx-2"
                     />
                     <Image
                       src="/Opdracht-3b-min.png"
                       alt="1b"
                       width={100}
                       height={100}
-                      className="shadow-md"
+                      className="shadow-md mx-2"
                     />
                     <Image
                       src="/Opdracht-3c-min.png"
                       alt="1c"
                       width={100}
                       height={100}
-                      className="shadow-md"
+                      className="shadow-md mx-2"
                     />
                   </div>
                 </motion.div>
