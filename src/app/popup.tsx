@@ -13,8 +13,8 @@ export default function Popup({ isOpen, onClose }: PopupProps) {
   const content =
     "Littie is a brand that embodies creativity and passion. It all started with a dream and a lot of hard work to turn imagination into reality. From sketching ideas on paper to transforming them into stunning designs, Littie has been a journey of love, persistence, and artistic expression.";
 
-  const image1Url = "/Art-1-min.jpg";
-  const image2Url = "/Art-2-min.jpg";
+  const image1Url = "/Art-1-min.JPG";
+  const image2Url = "/Art-2-min.JPG";
 
   return (
     <motion.div
