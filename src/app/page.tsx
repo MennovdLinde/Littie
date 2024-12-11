@@ -368,7 +368,7 @@ export default function Home() {
           className="bg-[#60c4e6] p-6 rounded-2xl flex flex-col justify-between col-span-12 md:col-span-6 lg:col-span-4"
         >
           <div className="flex justify-between items-center">
-            <h3 className="text-2xl font-bold text-[#ffddc3]">Portofolio</h3>
+            <h3 className="text-2xl font-bold">Portofolio</h3>
             <motion.div
               whileHover={{ scale: 1.2, rotate: 20 }}
               whileTap={{ scale: 0.9 }}
