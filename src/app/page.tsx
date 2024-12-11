@@ -8,16 +8,7 @@ import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import Popup from "./popup";
 import "./globals.css";
-import dynamic from "next/dynamic";
-
-const Swiper = dynamic(() => import("swiper/react").then((mod) => mod.Swiper), {
-  ssr: false,
-});
-const SwiperSlide = dynamic(
-  () => import("swiper/react").then((mod) => mod.SwiperSlide),
-  { ssr: false }
-);
-
+import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
