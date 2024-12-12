@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const CustomSlider = ({ images }) => {
+const CustomSlider: React.FC<CustomSliderProps> = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Automatically loop through the images
