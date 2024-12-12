@@ -7,6 +7,7 @@ import { useEffect, useRef, useMemo, useState } from "react";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import Popup from "./popup";
+import CustomSlider from "./CustomSlider";
 import "./globals.css";
 
 export default function Home() {
@@ -158,7 +159,7 @@ export default function Home() {
 
         <motion.div
           variants={itemVariants}
-          className="bg-[#f0ce17] p-4 rounded-2xl flex flex-col justify-evenly col-span-12 md:col-span-7 lg:col-span-4 row-span-2 h-[95vh] md:max-h-[88vh] overflow-y-auto hide-scrollbar "
+          className="bg-[#f0ce17] p-4 rounded-2xl flex flex-col justify-evenly col-span-12 md:col-span-7 lg:col-span-4 row-span-2 h-[90vh] md:max-h-[88vh] overflow-y-auto hide-scrollbar "
         >
           <div className="interactive-div group p-0 bg-yellow-500 rounded-xl shadow-lg">
             <motion.div
@@ -170,7 +171,6 @@ export default function Home() {
               <h2 className="text-white font-bold text-lg">
                 Art Exhibition - Kane
               </h2>
-              <p className="text-white text-sm">Uitleg project</p>
             </motion.div>
             <AnimatePresence>
               {openDivIndex === 0 && (
@@ -181,38 +181,13 @@ export default function Home() {
                   transition={{ duration: 0.5, ease: "easeOut" }}
                   className="div-content mt-2"
                 >
-                  <div className="flex items-center justify-evenly">
-                    <div className="relative w-24 h-24 group">
-                      <div className="absolute inset-0 bg-gray-900 flex items-center justify-center rounded-lg shadow-md transition-transform transform group-hover:rotate-y-180">
-                        <Image
-                          src="/Opdracht-1a-min.jpg"
-                          alt="1a"
-                          layout="fill"
-                          className="rounded-lg object-cover"
-                        />
-                      </div>
-                    </div>
-                    <div className="relative w-24 h-24 group">
-                      <div className="absolute inset-0 bg-gray-900 flex items-center justify-center rounded-lg shadow-md transition-transform transform group-hover:rotate-y-180">
-                        <Image
-                          src="/Opdracht-1b-min.JPG"
-                          alt="1b"
-                          layout="fill"
-                          className="rounded-lg object-cover"
-                        />
-                      </div>
-                    </div>
-                    <div className="relative w-24 h-24 group">
-                      <div className="absolute inset-0 bg-gray-900 flex items-center justify-center rounded-lg shadow-md transition-transform transform group-hover:rotate-y-180">
-                        <Image
-                          src="/Opdracht-1c-min.jpg"
-                          alt="1c"
-                          layout="fill"
-                          className="rounded-lg object-cover"
-                        />
-                      </div>
-                    </div>
-                  </div>
+                  <CustomSlider
+                    images={[
+                      "/Opdracht-1a-min.jpg",
+                      "/Opdracht-1b-min.JPG",
+                      "/Opdracht-1c-min.jpg",
+                    ]}
+                  />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -226,7 +201,6 @@ export default function Home() {
               className="div-header"
             >
               <h2 className="text-white font-bold text-lg">EP - Dave</h2>
-              <p className="text-white text-sm">Uitleg project</p>
             </motion.div>
             <AnimatePresence>
               {openDivIndex === 1 && (
@@ -237,38 +211,13 @@ export default function Home() {
                   transition={{ duration: 0.5 }}
                   className="div-content mt-2"
                 >
-                  <div className="flex items-center justify-evenly">
-                    <div className="relative w-24 h-24 group">
-                      <div className="absolute inset-0 bg-gray-900 flex items-center justify-center rounded-lg shadow-md transition-transform transform group-hover:rotate-y-180">
-                        <Image
-                          src="/Opdracht-2a-min.jpg"
-                          alt="2a"
-                          layout="fill"
-                          className="rounded-lg object-cover"
-                        />
-                      </div>
-                    </div>
-                    <div className="relative w-24 h-24 group">
-                      <div className="absolute inset-0 bg-gray-900 flex items-center justify-center rounded-lg shadow-md transition-transform transform group-hover:rotate-y-180">
-                        <Image
-                          src="/Opdracht-2b-min.png"
-                          alt="2b"
-                          layout="fill"
-                          className="rounded-lg object-cover"
-                        />
-                      </div>
-                    </div>
-                    <div className="relative w-24 h-24 group">
-                      <div className="absolute inset-0 bg-gray-900 flex items-center justify-center rounded-lg shadow-md transition-transform transform group-hover:rotate-y-180">
-                        <Image
-                          src="/Opdracht-2c-min.png"
-                          alt="2c"
-                          layout="fill"
-                          className="rounded-lg object-cover"
-                        />
-                      </div>
-                    </div>
-                  </div>
+                  <CustomSlider
+                    images={[
+                      "/Opdracht-2a-min.jpg",
+                      "/Opdracht-2b-min.png",
+                      "/Opdracht-2c-min.png",
+                    ]}
+                  />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -284,7 +233,6 @@ export default function Home() {
               <h2 className="text-white font-bold text-lg">
                 Take it to the Bridge
               </h2>
-              <p className="text-white text-sm">Uitleg project</p>
             </motion.div>
             <AnimatePresence>
               {openDivIndex === 2 && (
@@ -295,38 +243,13 @@ export default function Home() {
                   transition={{ duration: 0.5 }}
                   className="div-content mt-2"
                 >
-                  <div className="flex items-center justify-evenly">
-                    <div className="relative w-24 h-24 group">
-                      <div className="absolute inset-0 bg-gray-900 flex items-center justify-center rounded-lg shadow-md transition-transform transform group-hover:rotate-y-180">
-                        <Image
-                          src="/Opdracht-3a-min.png"
-                          alt="3a"
-                          layout="fill"
-                          className="rounded-lg object-cover"
-                        />
-                      </div>
-                    </div>
-                    <div className="relative w-24 h-24 group">
-                      <div className="absolute inset-0 bg-gray-900 flex items-center justify-center rounded-lg shadow-md transition-transform transform group-hover:rotate-y-180">
-                        <Image
-                          src="/Opdracht-3b-min.png"
-                          alt="3b"
-                          layout="fill"
-                          className="rounded-lg object-cover"
-                        />
-                      </div>
-                    </div>
-                    <div className="relative w-24 h-24 group">
-                      <div className="absolute inset-0 bg-gray-900 flex items-center justify-center rounded-lg shadow-md transition-transform transform group-hover:rotate-y-180">
-                        <Image
-                          src="/Opdracht-3c-min.png"
-                          alt="3c"
-                          layout="fill"
-                          className="rounded-lg object-cover"
-                        />
-                      </div>
-                    </div>
-                  </div>
+                  <CustomSlider
+                    images={[
+                      "/Opdracht-3a-min.png",
+                      "/Opdracht-3b-min.png",
+                      "/Opdracht-3c-min.png",
+                    ]}
+                  />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -340,7 +263,6 @@ export default function Home() {
               className="div-header"
             >
               <h2 className="text-white font-bold text-lg">SlipIn</h2>
-              <p className="text-white text-sm">Uitleg project</p>
             </motion.div>
             <AnimatePresence>
               {openDivIndex === 3 && (
@@ -351,38 +273,13 @@ export default function Home() {
                   transition={{ duration: 0.5 }}
                   className="div-content mt-2"
                 >
-                  <div className="flex items-center justify-evenly">
-                    <div className="relative w-24 h-24 group">
-                      <div className="absolute inset-0 bg-gray-900 flex items-center justify-center rounded-lg shadow-md transition-transform transform group-hover:rotate-y-180">
-                        <Image
-                          src="/Opdracht-4a-min.png"
-                          alt="4a"
-                          layout="fill"
-                          className="rounded-lg object-cover"
-                        />
-                      </div>
-                    </div>
-                    <div className="relative w-24 h-24 group">
-                      <div className="absolute inset-0 bg-gray-900 flex items-center justify-center rounded-lg shadow-md transition-transform transform group-hover:rotate-y-180">
-                        <Image
-                          src="/Opdracht-4b-min.png"
-                          alt="4b"
-                          layout="fill"
-                          className="rounded-lg object-cover"
-                        />
-                      </div>
-                    </div>
-                    <div className="relative w-24 h-24 group">
-                      <div className="absolute inset-0 bg-gray-900 flex items-center justify-center rounded-lg shadow-md transition-transform transform group-hover:rotate-y-180">
-                        <Image
-                          src="/Opdracht-4c-min.png"
-                          alt="4c"
-                          layout="fill"
-                          className="rounded-lg object-cover"
-                        />
-                      </div>
-                    </div>
-                  </div>
+                  <CustomSlider
+                    images={[
+                      "/Opdracht-4a-min.png",
+                      "/Opdracht-4b-min.png",
+                      "/Opdracht-4c-min.png",
+                    ]}
+                  />
                 </motion.div>
               )}
             </AnimatePresence>
