@@ -159,7 +159,7 @@ export default function Home() {
 
         <motion.div
           variants={itemVariants}
-          className="bg-[#f0ce17] p-4 rounded-2xl flex flex-col justify-evenly col-span-12 md:col-span-7 lg:col-span-4 row-span-2 sm:h-[80vh] md:h-auto md:max-h-[89vh] overflow-y-auto hide-scrollbar "
+          className="bg-[#f0ce17] p-4 rounded-2xl flex flex-col justify-evenly col-span-12 md:col-span-7 lg:col-span-4 row-span-2 h-auto min-h-[80vh] sm:max-h-[89vh] overflow-y-auto hide-scrollbar "
         >
           <div className="interactive-div group p-0 bg-yellow-500 rounded-xl shadow-lg">
             <motion.div
