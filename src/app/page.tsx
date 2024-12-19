@@ -7,7 +7,7 @@ import { useEffect, useRef, useMemo, useState } from "react";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import Popup from "./popup";
-import CustomSlider from "./CustomSlider";
+import CustomSlider from "./customSlider";
 import "./globals.css";
 
 export default function Home() {
@@ -184,8 +184,11 @@ export default function Home() {
                   <CustomSlider
                     images={[
                       "/Opdracht-1a-min.jpg",
-                      "/Opdracht-1b-min.JPG",
+                      "/Opdracht-1b-min.jpg",
                       "/Opdracht-1c-min.jpg",
+                      "/Opdracht-1e-min.jpg",
+                      "/Opdracht-1f-min.jpg",
+                      "/Opdracht-1g-min.jpg",
                     ]}
                   />
                 </motion.div>
@@ -213,9 +216,11 @@ export default function Home() {
                 >
                   <CustomSlider
                     images={[
-                      "/Opdracht-2a-min.jpg",
+                      "/Opdracht-2a-min.png",
                       "/Opdracht-2b-min.png",
                       "/Opdracht-2c-min.png",
+                      "/Opdracht-2d-min.png",
+                      "/Opdracht-2e-min.png",
                     ]}
                   />
                 </motion.div>
@@ -248,6 +253,7 @@ export default function Home() {
                       "/Opdracht-3a-min.png",
                       "/Opdracht-3b-min.png",
                       "/Opdracht-3c-min.png",
+                      "/Opdracht-3d-min.png",
                     ]}
                   />
                 </motion.div>
@@ -278,6 +284,9 @@ export default function Home() {
                       "/Opdracht-4a-min.png",
                       "/Opdracht-4b-min.png",
                       "/Opdracht-4c-min.png",
+                      "/Opdracht-4d-min.png",
+                      "/Opdracht-4e-min.png",
+                      "/Opdracht-4f-min.png",
                     ]}
                   />
                 </motion.div>
