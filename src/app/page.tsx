@@ -184,11 +184,10 @@ export default function Home() {
                   <CustomSlider
                     images={[
                       "/Opdracht-1a-min.jpg",
-                      "/Opdracht-1b-min.jpg",
+                      "/Opdracht-1b-min.JPG",
                       "/Opdracht-1c-min.jpg",
+                      "/Opdracht-1d-min.jpg",
                       "/Opdracht-1e-min.jpg",
-                      "/Opdracht-1f-min.jpg",
-                      "/Opdracht-1g-min.jpg",
                     ]}
                   />
                 </motion.div>
