@@ -190,17 +190,14 @@ export default function Home() {
             />
           </div>
           <div className="hidden md:block">
-            {!animationDone && (
-              <Image
-                ref={lotImageRef}
-                src="/Lot.png"
-                alt="Lot"
-                width={320}
-                height={320}
-                className="max-w-[350px] h-auto object-cover"
-              />
-            )}
-
+            <Image
+              ref={lotImageRef}
+              src="/Lot.png"
+              alt="Lot"
+              width={320}
+              height={320}
+              className="max-w-[350px] h-auto object-cover"
+            />
             {animationDone &&
               portalContainer &&
               createPortal(
