@@ -2,26 +2,102 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-VariableFont_opsz.wght.woff') format('woff'),
+    url('/fonts/Inter-VariableFont_opsz.wght.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: 'Inter Italic';
+  src: url('/fonts/Inter-Italic-VariableFont_opsz.wght.woff') format('woff'),
+    url('/fonts/Inter-Italic-VariableFont_opsz.wght.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Kai';
+  src: url('/fonts/BebasKai.woff') format('woff'),
+    url('/fonts/BebasKai.woff2') format('woff2');
+  font-weight: 400 900;
+  font-style: normal;
 }
 
 body {
-  color: var(--foreground);
+color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+font-family: 'Inter', sans-serif;
+  /* Use Inter variable font */
+}
+
+p,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Inter';
+  font-weight: 500;
+}
+
+h1 {
+  font-family: 'Kai';
+  font-weight: 600;
+  font-size: 2.25rem;
+  text-transform: uppercase;
+  /* transform: scaleY(1.2); */
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, and Edge */
+}
+
+.interactive-div {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  width: 100%;
+  margin: auto;
+}
+
+.interactive-div:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.div-header {
+  text-align: center;
+  padding: 20px;
+}
+
+.div-content {
+  max-height: 400px;
+  /* or whatever max size fits well */
+  overflow-y: hidden;
+  /* Allow content to scroll within the div */
+  transition: max-height 0.5s ease, opacity 0.5s ease;
 }

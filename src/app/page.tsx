@@ -2,231 +2,390 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Linkedin, Github, Mail } from 'lucide-react';
-import { useEffect, useRef, useMemo } from 'react';
-import { motion, useAnimation } from 'framer-motion';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { ArrowUpRight, Linkedin, Instagram, Facebook } from "lucide-react";
+import { useEffect, useRef, useMemo, useState } from "react";
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import { gsap } from "gsap";
+import Popup from "./popup";
+import CustomSlider from "./customSlider";
+import "./globals.css";
 
 export default function Home() {
-
   const mainImageRef = useRef(null);
   const scrollRef = useRef(null);
   const controls = useAnimation();
+  const [openDivIndex, setOpenDivIndex] = useState<number | null>(0);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   useEffect(() => {
-    gsap.fromTo(
-      mainImageRef.current,
-      { opacity: 0, scale: 0.8 },
-      { opacity: 1, scale: 1, duration: 2, ease: "power3.out" }
-    );
+    const isSmallScreen = window.matchMedia("(max-width: 768px)").matches;
 
-    gsap.utils.toArray('.scroll-trigger').forEach((element) => {
-      if (element instanceof Element) {
-        gsap.fromTo(element,
-          { y: 50, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            scrollTrigger: {
-              trigger: element,
-              start: "top bottom-=100",
-              end: "bottom top+=100",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
-      }
-    });
-
+    if (isSmallScreen) {
+      gsap.fromTo(
+        mainImageRef.current,
+        { scale: 0.5, y: -200 }, // Smaller initial scale and offsets
+        {
+          scale: 1,
+          y: 0,
+          duration: 1,
+          ease: "expo.out",
+          delay: 1, // Shorter delay for small screens
+        }
+      );
+    } else {
+      gsap.fromTo(
+        mainImageRef.current,
+        { scale: 1.2, x: -50, y: 50, height: 350 }, // Larger initial scale and offsets
+        {
+          scale: 1,
+          x: 0,
+          y: 0,
+          height: 440,
+          duration: 1,
+          ease: "expo.out",
+          delay: 1, // Adds a slight delay for dramatic effect
+        }
+      );
+    }
     controls.start("visible");
   }, [controls]);
 
-  useEffect(() => {
-    gsap.to(".leaf-image", {
-      y: -10,
-      repeat: -1,  
-      yoyo: true,  
-      ease: "power1.inOut",  
-      duration: 2, 
-    });
-  }, []);
-
-  const containerVariants = useMemo(() => ({
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 1,
-        staggerChildren: 0.2,
+  const containerVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: {
+          delayChildren: 1,
+        },
       },
-    },
-  }), []);
+    }),
+    []
+  );
 
-  const itemVariants = useMemo(() => ({
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
+  const itemVariants = useMemo(
+    () => ({
+      hidden: { scale: 0.8, opacity: 0 },
+      visible: {
+        scale: 1,
+        opacity: 1,
+        transition: {
+          duration: 0.5,
+          ease: "easeOut",
+        },
       },
-    },
-  }), []);
+    }),
+    []
+  );
+
+  const toggleDiv = (index: number) => {
+    setOpenDivIndex(openDivIndex === index ? null : index); // Toggle div state
+  };
+
+  const handlePopupOpen = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handlePopupClose = () => {
+    setIsPopupOpen(false);
+  };
 
   return (
     <motion.div
       ref={scrollRef}
-      className="bg-[#11120d] min-h-screen p-3 md:p-5 text-gray-200"
+      className="bg-[#AFD4E6] min-h-screen p-3 md:p-5 text-gray-200"
       initial="hidden"
       animate={controls}
       variants={containerVariants}
     >
       <motion.header
         variants={itemVariants}
-        className="flex flex-col bg-[#d8cfbc] rounded-2xl p-4 sm:flex-row justify-between items-center mb-8"
+        className="flex flex-col bg-[#F6F3EE] rounded-2xl shadow-lg sm:flex-row justify-between items-center mb-3"
       >
-        <h1 className="text-xl font-bold font-serif italic text-[#4A3728] ml-4 mb-4 sm:mb-0">
-          Kush Sharma
-        </h1>
-        <nav className="space-x-4 mr-4">
-          <Link href="#projects" className="text-sm text-[#6B4D30] hover:text-[#4A3728]">
-            PROJECTS
-          </Link>
-          <Link href="#about" className="text-sm text-[#6B4D30] hover:text-[#4A3728]">
+        <Image
+          src="/Logo.png"
+          alt="Logo"
+          width={70}
+          height={40}
+          className="pl-4"
+        />
+        <nav className="space-x-4 mr-4 pr-4">
+          <Link href="#projects" className="text-[#076447] hover:text-[white]">
             ABOUT
           </Link>
-          <Link href="#contact" className="text-sm text-[#6B4D30] hover:text-[#4A3728]">
+          <Link href="#about" className="text-[#076447] hover:text-[white]">
+            PORTOFOLIO
+          </Link>
+          <Link href="#contact" className="text-[#076447] hover:text-[white]">
             CONTACT
           </Link>
         </nav>
+        <Image
+          src="/Swirl.png"
+          alt="Swirl"
+          width={300}
+          height={150}
+          className="absolute top-30 opacity-90 pointer-events-none hidden sm:block"
+        />
       </motion.header>
-  
+
       <div className="grid grid-cols-12 gap-4">
         <motion.div
           variants={itemVariants}
-          className="bg-[#d8cfbc] p-6 rounded-md col-span-12 md:col-span-6 lg:col-span-4 flex flex-col justify-evenly scroll-trigger"
+          className="bg-[#F6F3EE] p-6 rounded-2xl shadow-lg col-span-12 md:col-span-6 lg:col-span-5 flex flex-col justify-evenly row-span-2"
         >
-          <motion.div variants={itemVariants} className="flex justify-end items-center">
-            <Image
-              src="/coffee.png"
-              alt="coffee"
-              width={150}
-              height={150}
-              className="object-cover h-auto mb-4 mr-4 hover:scale-110 transition-all duration-300 ease-in-out"
-              priority
-            />
-          </motion.div>
-          <h2 className="md:text-3xl text-2xl lg:text-4xl font-bold font-serif mb-2 leading-tight text-[#4A3728]">
-            Building Stunning Web Applications with <span className="italic underline">Next.js</span> that inspire and captivate users.
-          </h2>
+          <div className="flex row items-center">
+            <h1 className="mb-2 text-[#076447]">
+              Design that tells a story, illustrations that speak. <br></br>
+              <span className="text-[#F76F2A]">Welcome to Litttie!</span>
+            </h1>
+          </div>
         </motion.div>
-  
+
         <div
           ref={mainImageRef}
-          className="bg-[#57544a] rounded-md flex items-end justify-center main_image col-span-12 md:col-span-5 lg:col-span-4"
+          className="bg-[#EDCCE3] bg-opacity-80 rounded-2xl shadow-lg flex items-end justify-center main_image col-span-12 md:col-span-5 lg:col-span-3 row-span-2"
         >
           <Image
-            src="/bentolio-avatar.png"
-            alt="Kush Sharma"
-            width={250}
-            height={250}
-            className="max-w-[240px] h-auto object-cover pt-12"
-            priority
+            src="/Lot.png"
+            alt="Lot"
+            width={320}
+            height={320}
+            className="max-w-[350px] h-auto object-cover pt-2"
           />
         </div>
-  
+
         <motion.div
           variants={itemVariants}
-          className="bg-[#d8cfbc] p-4 rounded-md flex flex-col justify-evenly scroll-trigger col-span-12 md:col-span-7 lg:col-span-4"
+          className="bg-[#1A91D4] p-4 rounded-2xl shadow-lg flex flex-col justify-evenly col-span-12 md:col-span-7 lg:col-span-4 row-span-3 min-h-[80vh] sm:max-h-[82vh] overflow-y-auto hide-scrollbar"
         >
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-2xl font-semibold text-[#4A3728]">Work</h3>
-            <motion.div whileHover={{ scale: 1.2, rotate: 20 }} whileTap={{ scale: 0.9 }}>
-              <Link href="https://visionforge.vercel.app">
-                <ArrowUpRight className="text-[#6B4D30] cursor-pointer" size={24} />
-              </Link>
-            </motion.div>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="relative overflow-hidden rounded-lg mb-4">
-              <Image
-                src="/work.jpg"
-                alt="Vision Forge Project"
-                width={400}
-                height={250}
-                className="object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"
-                priority
+          <div className="flex justify-end">
+            <motion.div
+              whileHover={{ scale: 1.2, rotate: 20 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={handlePopupOpen} // Open the popup on click
+            >
+              <ArrowUpRight
+                className="mb-2 text-[#F6F3EE] cursor-pointer"
+                size={30}
               />
-            </div>
-            <div className="flex flex-col items-start p-2 px-4">
-              <h3 className="text-2xl font-semibold text-[#4A3728] mb-2 text-left">Vision Forge</h3>
-              <p className="text-sm font-thin text-left text-black">
-                VisionForge is a dynamic project, allows users to generate stunning images for free using prompts, with unlimited generations available.
-              </p>
-            </div>
-          </div>
-        </motion.div>
-  
-        <motion.div
-          variants={itemVariants}
-          className="bg-[#d8cfbc] p-6 rounded-md scroll-trigger col-span-12 md:col-span-6 lg:col-span-6 flex justify-between gap-4 items-center"
-        >
-          <Image
-            src="/leaf.png"
-            alt="leaf-img"
-            className="object-cover h-auto leaf-image"
-            width={100}
-            height={100}
-            priority
-          />
-          <p className="text-md font-thin text-black">
-            A dedicated and driven developer with a strong passion for creating meaningful digital experiences. Known for a problem-solving mindset, attention to detail, and a genuine curiosity to learn and grow. Always ready to tackle challenges with persistence and a commitment to delivering quality results.
-          </p>
-        </motion.div>
-  
-        <motion.div
-          variants={itemVariants}
-          className="bg-[#57544a] p-6 rounded-md scroll-trigger col-span-12 md:col-span-6 lg:col-span-3 flex flex-col justify-between"
-        >
-          <div className="flex justify-between items-center">
-            <h3 className="text-lg font-thin mb-2 text-[#ffddc3]">Have some questions?</h3>
-            <motion.div whileHover={{ scale: 1.2, rotate: 20 }} whileTap={{ scale: 0.9 }}>
-              <Link href="mailto:fullstack.kush@gmail.com">
-                <ArrowUpRight className="mb-2 text-[#D4C6B8] cursor-pointer" size={20} />
-              </Link>
             </motion.div>
           </div>
-          <h3 className="text-4xl md:text-5xl mt-4 font-sans font-semibold text-[#ffecdd]">
-            Contact me
+          <h1 className="text-[#F6F3EE] absolute top-[15px] left-9">
+            Portofolio
+          </h1>
+          <div className="interactive-div group p-0 rounded-xl shadow-lg">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => toggleDiv(0)}
+              className="div-header"
+            >
+              <h2 className="text-left">Freehand Illustrations</h2>
+            </motion.div>
+            <AnimatePresence>
+              {openDivIndex === 0 && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "fit-content", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="div-content"
+                >
+                  <div className="relative mx-auto overflow-hidden rounded-lg">
+                    <Image
+                      src="/freehand.png" // Use the first image as the static one
+                      alt="freehand"
+                      width={250} // Provide a large width for the image source
+                      height={200} // Ensure the aspect ratio remains square
+                      className="rounded-lg object-cover mx-auto mb-3"
+                    />
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          <div className="interactive-div group p-0 rounded-xl shadow-lg">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => toggleDiv(1)}
+              className="div-header"
+            >
+              <h2 className="text-left">EP - Dave</h2>
+            </motion.div>
+            <AnimatePresence>
+              {openDivIndex === 1 && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "fit-content", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="div-content"
+                >
+                  <CustomSlider
+                    images={[
+                      "/Opdracht-2a-min.png",
+                      "/Opdracht-2b-min.png",
+                      "/Opdracht-2c-min.png",
+                      "/Opdracht-2d-min.png",
+                      "/Opdracht-2e-min.png",
+                    ]}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          <div className="interactive-div group p-0 rounded-xl shadow-lg">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => toggleDiv(2)}
+              className="div-header"
+            >
+              <h2 className="text-left">Take it to the Bridge</h2>
+            </motion.div>
+            <AnimatePresence>
+              {openDivIndex === 2 && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "fit-content", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="div-content"
+                >
+                  <CustomSlider
+                    images={[
+                      "/Opdracht-3a-min.png",
+                      "/Opdracht-3b-min.png",
+                      "/Opdracht-3c-min.png",
+                      "/Opdracht-3d-min.png",
+                    ]}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          <div className="interactive-div group p-0 rounded-xl shadow-lg">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => toggleDiv(3)}
+              className="div-header"
+            >
+              <h2 className="text-left">SlipIn</h2>
+            </motion.div>
+            <AnimatePresence>
+              {openDivIndex === 3 && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "fit-content", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="div-content"
+                >
+                  <CustomSlider
+                    images={[
+                      "/Opdracht-4a-min.png",
+                      "/Opdracht-4b-min.png",
+                      "/Opdracht-4c-min.png",
+                      "/Opdracht-4d-min.png",
+                      "/Opdracht-4e-min.png",
+                      "/Opdracht-4f-min.png",
+                    ]}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </motion.div>
+
+        <motion.div
+          variants={itemVariants}
+          className="bg-[#F6F3EE] p-6 rounded-2xl shadow-lg flex flex-col justify-between col-span-12 md:col-span-6 lg:col-span-4 row-span-2"
+        >
+          <div className="flex justify-end">
+            <motion.div
+              whileHover={{ scale: 1.2, rotate: 20 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <ArrowUpRight
+                className="mb-2 text-[#F6F3EE] cursor-pointer"
+                size={30}
+              />
+            </motion.div>
+          </div>
+          <h3 className="text-[#076447]">
+            Litttie brings stories to life with bold visuals, offering creative
+            solutions in graphic design and illustration—from unique logos and
+            branding to impactful designs for print and digital platforms.
           </h3>
         </motion.div>
-  
+
         <motion.div
           variants={itemVariants}
-          className="bg-[#d8cfbc] p-4 rounded-md flex justify-evenly items-center scroll-trigger col-span-12 md:col-span-6 lg:col-span-3"
+          className="bg-[#076447] p-6 rounded-2xl shadow-lg col-span-12 md:col-span-6 lg:col-span-4 flex flex-col justify-between row-span-2"
         >
-          {[
-            { href: 'https://www.linkedin.com/in/kushsharma738', Icon: Linkedin },
-            { href: 'https://github.com/Kushhhhhhhh', Icon: Github },
-            { href: 'mailto:fullstack.kush@gmail.com', Icon: Mail },
-          ].map(({ href, Icon }) => (
-            <Link key={href} href={href}>
-              <motion.div
-                className="text-[#6B4D30] hover:text-[#4A3728]"
-                whileHover={{ scale: 1.2, rotate: 10 }}
-                whileTap={{ scale: 0.9 }}
+          <div className="flex justify-end">
+            <motion.div
+              whileHover={{ scale: 1.2, rotate: 20 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={handlePopupOpen} // Open the popup on click
+            >
+              <Link href="mailto:lot@vanegdom.net">
+                <ArrowUpRight
+                  className="mb-2 text-[#F6F3EE] cursor-pointer"
+                  size={30}
+                />
+              </Link>
+            </motion.div>
+          </div>
+          <h3 className="text-[#F6F3EE] mb-auto" style={{ marginTop: -30 }}>
+            Questions?
+          </h3>
+          <h1 className="text-[#EDCCE3] text-opacity-80 mt-auto">CONTACT</h1>
+        </motion.div>
+        <motion.div
+          variants={itemVariants}
+          className="bg-[#F6F3EE] p-6 rounded-2xl shadow-lg col-span-12 md:col-span-6 lg:col-span-4 flex flex-col row-span-1"
+        >
+          <div className="flex justify-end items-center col-span-12">
+            {[
+              {
+                href: "https://www.linkedin.com/in/lot-van-egdom?originalSubdomain=nl",
+                Icon: Linkedin,
+              },
+              {
+                href: "https://www.instagram.com/lot.is.egdom/",
+                Icon: Instagram,
+              },
+              {
+                href: "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Flot.vanegdom%2F",
+                Icon: Facebook,
+              },
+            ].map(({ href, Icon }) => (
+              <Link
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Icon size={30} />
-              </motion.div>
-            </Link>
-          ))}
+                <motion.div
+                  className="text-[#076447] px-2"
+                  whileHover={{ scale: 1.2, rotate: 10 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Icon size={30} />
+                </motion.div>
+              </Link>
+            ))}
+          </div>
         </motion.div>
       </div>
+      <Popup isOpen={isPopupOpen} onClose={handlePopupClose} />
     </motion.div>
-  );  
+  );
 }
