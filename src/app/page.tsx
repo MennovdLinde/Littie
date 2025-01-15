@@ -6,19 +6,50 @@ import { ArrowUpRight, Linkedin, Instagram, Facebook } from "lucide-react";
 import { useEffect, useRef, useMemo, useState } from "react";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
+import { createPortal } from "react-dom";
 import Popup from "./popup";
 import CustomSlider from "./customSlider";
 import "./globals.css";
 
 export default function Home() {
   const mainImageRef = useRef(null);
+  const lotImageRef = useRef(null);
   const scrollRef = useRef(null);
   const controls = useAnimation();
   const [openDivIndex, setOpenDivIndex] = useState<number | null>(0);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(
+    null
+  );
+  const [animationDone, setAnimationDone] = useState(false);
+  const [lotImagePosition, setLotImagePosition] = useState({ top: 0, left: 0 });
+
+  // Dynamically create the portal root if it doesn't exist
+  useEffect(() => {
+    let portalDiv = document.getElementById("portal-root");
+    if (!portalDiv) {
+      portalDiv = document.createElement("div");
+      portalDiv.id = "portal-root";
+      document.body.appendChild(portalDiv); // Append it to the body
+    }
+    setPortalContainer(portalDiv);
+  }, []);
 
   useEffect(() => {
     const isSmallScreen = window.matchMedia("(max-width: 768px)").matches;
+    const timeline = gsap.timeline({
+      onComplete: () => {
+        // Measure the position of Lot.png at the end of the animation
+        if (lotImageRef.current) {
+          const rect = lotImageRef.current.getBoundingClientRect();
+          setLotImagePosition({
+            top: rect.top + window.scrollY, // Adjust for scroll position
+            left: rect.left + window.scrollX, // Adjust for scroll position
+          });
+        }
+        setAnimationDone(true);
+      },
+    });
 
     if (isSmallScreen) {
       gsap.fromTo(
@@ -33,9 +64,9 @@ export default function Home() {
         }
       );
     } else {
-      gsap.fromTo(
+      timeline.fromTo(
         mainImageRef.current,
-        { scale: 1.2, x: -50, y: 50, height: 350 }, // Larger initial scale and offsets
+        { scale: 1.2, x: -50, y: 50, height: 350 },
         {
           scale: 1,
           x: 0,
@@ -43,7 +74,7 @@ export default function Home() {
           height: 440,
           duration: 1,
           ease: "expo.out",
-          delay: 1, // Adds a slight delay for dramatic effect
+          delay: 1,
         }
       );
     }
@@ -100,7 +131,7 @@ export default function Home() {
     >
       <motion.header
         variants={itemVariants}
-        className="flex flex-col bg-[#F6F3EE] rounded-2xl shadow-lg sm:flex-row justify-between items-center mb-3"
+        className="flex flex-col relative z-[3] bg-[#F6F3EE] rounded-2xl shadow-lg sm:flex-row justify-between items-center mb-3"
       >
         <Image
           src="/Logo.png"
@@ -109,24 +140,17 @@ export default function Home() {
           height={40}
           className="pl-4"
         />
-        <nav className="space-x-4 mr-4 pr-4">
-          <Link href="#projects" className="text-[#076447] hover:text-[white]">
-            ABOUT
-          </Link>
+        <nav className="flex space-x-4 mr-4 pr-4 justify-between">
           <Link href="#about" className="text-[#076447] hover:text-[white]">
-            PORTOFOLIO
+            <h2>ABOUT</h2>
+          </Link>
+          <Link href="#projects" className="text-[#076447] hover:text-[white]">
+            <h2>PORTFOLIO</h2>
           </Link>
           <Link href="#contact" className="text-[#076447] hover:text-[white]">
-            CONTACT
+            <h2>CONTACT</h2>
           </Link>
         </nav>
-        <Image
-          src="/Swirl.png"
-          alt="Swirl"
-          width={300}
-          height={150}
-          className="absolute top-30 opacity-90 pointer-events-none hidden sm:block"
-        />
       </motion.header>
 
       <div className="grid grid-cols-12 gap-4">
@@ -142,22 +166,64 @@ export default function Home() {
           </div>
         </motion.div>
 
+        {animationDone && (
+          <Image
+            src="/Swirl.png"
+            alt="Swirl"
+            width={1000}
+            height={200}
+            className="absolute z-[2] top-[7vh] left-[55%] transform -translate-x-1/2 -translate-y-1/4 hidden md:block animate-fadeIn"
+          />
+        )}
+
         <div
           ref={mainImageRef}
           className="bg-[#EDCCE3] bg-opacity-80 rounded-2xl shadow-lg flex items-end justify-center main_image col-span-12 md:col-span-5 lg:col-span-3 row-span-2"
         >
-          <Image
-            src="/Lot.png"
-            alt="Lot"
-            width={320}
-            height={320}
-            className="max-w-[350px] h-auto object-cover pt-2"
-          />
+          <div className="block md:hidden">
+            <Image
+              src="/Lot.png"
+              alt="Lot"
+              width={320}
+              height={320}
+              className="max-w-[350px] h-auto object-cover"
+            />
+          </div>
+          <div className="hidden md:block">
+            {!animationDone && (
+              <Image
+                ref={lotImageRef}
+                src="/Lot.png"
+                alt="Lot"
+                width={320}
+                height={320}
+                className="max-w-[350px] h-auto object-cover"
+              />
+            )}
+
+            {animationDone &&
+              portalContainer &&
+              createPortal(
+                <Image
+                  src="/Lot.png"
+                  alt="Lot"
+                  width={320}
+                  height={320}
+                  className="max-w-[350px] h-auto object-cover hidden md:block"
+                  style={{
+                    position: "absolute",
+                    top: lotImagePosition.top,
+                    left: lotImagePosition.left,
+                  }}
+                />,
+                portalContainer
+              )}
+          </div>
         </div>
 
         <motion.div
           variants={itemVariants}
-          className="bg-[#1A91D4] p-4 rounded-2xl shadow-lg flex flex-col justify-evenly col-span-12 md:col-span-7 lg:col-span-4 row-span-3 min-h-[80vh] sm:max-h-[82vh] overflow-y-auto hide-scrollbar"
+          className="bg-[#1A91D4] z-[3] p-4 rounded-2xl shadow-lg flex flex-col justify-evenly col-span-12 md:col-span-7 lg:col-span-4 row-span-3 min-h-[80vh] sm:max-h-[82vh] overflow-y-auto hide-scrollbar"
         >
           <div className="flex justify-end">
             <motion.div
@@ -355,21 +421,19 @@ export default function Home() {
           <div className="flex justify-end items-center col-span-12">
             {[
               {
-                href: "https://www.linkedin.com/in/lot-van-egdom?originalSubdomain=nl",
-                Icon: Linkedin,
+                href: "/linkedin-icon.png",
+                link: "https://www.linkedin.com/in/lot-van-egdom?originalSubdomain=nl",
+                alt: "LinkedIn",
               },
               {
-                href: "https://www.instagram.com/lot.is.egdom/",
-                Icon: Instagram,
+                href: "/instagram-icon.png",
+                link: "https://www.instagram.com/lot.is.egdom/",
+                alt: "Instagram",
               },
-              {
-                href: "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Flot.vanegdom%2F",
-                Icon: Facebook,
-              },
-            ].map(({ href, Icon }) => (
+            ].map(({ href, link, alt }) => (
               <Link
-                key={href}
-                href={href}
+                key={link}
+                href={link}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -378,7 +442,13 @@ export default function Home() {
                   whileHover={{ scale: 1.2, rotate: 10 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Icon size={30} />
+                  <Image
+                    src={href}
+                    alt={alt}
+                    width={40} // Adjust the width
+                    height={40} // Adjust the height
+                    className="object-cover"
+                  />
                 </motion.div>
               </Link>
             ))}
