@@ -13,7 +13,7 @@ import "./globals.css";
 
 export default function Home() {
   const mainImageRef = useRef(null);
-  const lotImageRef = useRef(null);
+  const lotImageRef = useRef<HTMLImageElement | null>(null);
   const scrollRef = useRef(null);
   const controls = useAnimation();
   const [openDivIndex, setOpenDivIndex] = useState<number | null>(0);
