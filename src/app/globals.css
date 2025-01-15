@@ -25,18 +25,7 @@
   font-style: normal;
 }
 
-body {
-color: var(--foreground);
-  background: var(--background);
-font-family: 'Inter', sans-serif;
-  /* Use Inter variable font */
-}
-
-p,
-h3,
-h4,
-h5,
-h6 {
+h3 {
   font-family: 'Inter';
   font-weight: 500;
 }
