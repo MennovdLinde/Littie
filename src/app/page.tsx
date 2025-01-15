@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Linkedin, Instagram, Facebook } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useMemo, useState } from "react";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
