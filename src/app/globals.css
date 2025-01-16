@@ -24,6 +24,9 @@
   font-weight: 400 900;
   font-style: normal;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 h3 {
   font-family: 'Inter';
@@ -84,7 +87,7 @@ h2 {
 
 .div-header {
   text-align: center;
-  padding: 20px;
+  padding: 15px;
 }
 
 .div-content {
