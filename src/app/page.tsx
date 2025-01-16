@@ -24,11 +24,11 @@ export default function Home() {
   const [currentSection, setCurrentSection] = useState("home");
   const [isHomeRefreshed, setIsHomeRefreshed] = useState(true);
 
-  const handleNavClick = (sectionId) => {
+  const handleNavClick = (sectionId: string) => {
     setIsHomeRefreshed(false); // Set to false when navigating
     setCurrentSection(sectionId);
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
-  };
+  };  
 
   useEffect(() => {
     if (!isHomeRefreshed) {
