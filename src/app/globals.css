@@ -52,16 +52,20 @@ h2 {
   }
 }
 
+@media (max-width: 768px) {
+
+  h1,
+  h2 {
+    font-family: 'Kai';
+  }
+}
 .hide-scrollbar {
   scrollbar-width: none;
-  /* Firefox */
   -ms-overflow-style: none;
-  /* IE and Edge */
 }
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
-  /* Chrome, Safari, and Edge */
 }
 
 .interactive-div {
