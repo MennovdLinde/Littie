@@ -25,10 +25,10 @@ export default function Home() {
   const [isHomeRefreshed, setIsHomeRefreshed] = useState(true);
 
   const handleNavClick = (sectionId: string) => {
-    setIsHomeRefreshed(false); // Set to false when navigating
+    setIsHomeRefreshed(false);
     setCurrentSection(sectionId);
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
-  };  
+  };
 
   useEffect(() => {
     if (!isHomeRefreshed) {
@@ -39,13 +39,12 @@ export default function Home() {
     }
   }, [isHomeRefreshed, controls]);
 
-  // Dynamically create the portal root if it doesn't exist
   useEffect(() => {
     let portalDiv = document.getElementById("portal-root");
     if (!portalDiv) {
       portalDiv = document.createElement("div");
       portalDiv.id = "portal-root";
-      document.body.appendChild(portalDiv); // Append it to the body
+      document.body.appendChild(portalDiv);
     }
     setPortalContainer(portalDiv);
   }, []);
@@ -54,12 +53,11 @@ export default function Home() {
     const isSmallScreen = window.matchMedia("(max-width: 768px)").matches;
     const timeline = gsap.timeline({
       onComplete: () => {
-        // Measure the position of Lot.png at the end of the animation
         if (lotImageRef.current) {
           const rect = lotImageRef.current.getBoundingClientRect();
           setLotImagePosition({
-            top: rect.top + window.scrollY, // Adjust for scroll position
-            left: rect.left + window.scrollX, // Adjust for scroll position
+            top: rect.top + window.scrollY,
+            left: rect.left + window.scrollX,
           });
         }
         setAnimationDone(true);
@@ -69,13 +67,13 @@ export default function Home() {
     if (isSmallScreen) {
       gsap.fromTo(
         mainImageRef.current,
-        { scale: 0.5, y: -200 }, // Smaller initial scale and offsets
+        { scale: 0.5, y: -200 },
         {
           scale: 1,
           y: 0,
           duration: 1,
           ease: "expo.out",
-          delay: 1, // Shorter delay for small screens
+          delay: 1,
         }
       );
     } else {
@@ -272,10 +270,10 @@ export default function Home() {
                     >
                       <div className="relative mx-auto overflow-hidden rounded-lg">
                         <Image
-                          src="/freehand.png" // Use the first image as the static one
+                          src="/freehand.png"
                           alt="freehand"
-                          width={250} // Provide a large width for the image source
-                          height={200} // Ensure the aspect ratio remains square
+                          width={250}
+                          height={200}
                           className="rounded-lg object-cover mx-auto mb-2"
                         />
                       </div>
@@ -459,8 +457,8 @@ export default function Home() {
                       <Image
                         src={href}
                         alt={alt}
-                        width={40} // Adjust the width
-                        height={40} // Adjust the height
+                        width={40}
+                        height={40}
                         className="object-cover"
                       />
                     </motion.div>
