@@ -469,7 +469,36 @@ export default function Home() {
           </div>
         )}
         {currentSection === "projects" && (
-          <div id="projects">Projects Content</div>
+          <div id="projects" className="grid grid-cols-4 gap-4 h-screen p-3">
+            <motion.div
+              className="bg-[#FFDDC1] rounded-lg shadow-lg flex items-center justify-center h-full"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <h2 className="text-[#333]">Project 1</h2>
+            </motion.div>
+            <motion.div
+              className="bg-[#C1FFDD] rounded-lg shadow-lg flex items-center justify-center h-full"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <h2 className="text-[#333]">Project 2</h2>
+            </motion.div>
+            <motion.div
+              className="bg-[#C1D9FF] rounded-lg shadow-lg flex items-center justify-center h-full"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <h2 className="text-[#333]">Project 3</h2>
+            </motion.div>
+            <motion.div
+              className="bg-[#E4C1FF] rounded-lg shadow-lg flex items-center justify-center h-full"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <h2 className="text-[#333]">Project 4</h2>
+            </motion.div>
+          </div>
         )}
       </div>
     </motion.div>
