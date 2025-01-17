@@ -27,12 +27,17 @@ h6 {
 
 h1 {
   font-family: 'Kai';
-  font-size: 7vh;
+  font-size: 2.70rem;
   line-height: 1.2;
   transform: scaleY(1.1);
-    letter-spacing: 0.025em;
+  letter-spacing: 0.025em;
 }
-/* transform: scaleY(1.2); */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+}
 
 h2 {
   font-family: 'Kai';
