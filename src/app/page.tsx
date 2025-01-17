@@ -148,7 +148,7 @@ export default function Home() {
         <nav className="flex space-x-4 justify-between sm:items-center pr-0 md:pr-4">
           <button
             onClick={() => handleNavClick("home")}
-            className={`text-[#076447] px-1 md:px-5 ${
+            className={`text-[#076447] hover:text-[#F6F3EE] px-1 md:px-5   ${
               currentSection === "home" ? "border-b-2 border-[#076447]" : ""
             }`}
           >
@@ -156,7 +156,7 @@ export default function Home() {
           </button>
           <button
             onClick={() => handleNavClick("portofolio")}
-            className={`text-[#076447] px-1 md:px-5 ${
+            className={`text-[#076447] hover:text-[#F6F3EE] px-1 md:px-5 ${
               currentSection === "portofolio"
                 ? "border-b-2 border-[#076447]"
                 : ""
@@ -166,7 +166,7 @@ export default function Home() {
           </button>
           <button
             onClick={() => handleNavClick("contact")}
-            className={`text-[#076447] px-1 md:px-5 ${
+            className={`text-[#076447] hover:text-[#F6F3EE] px-1 md:px-5 ${
               currentSection === "contact" ? "border-b-2 border-[#076447]" : ""
             }`}
           >
@@ -236,6 +236,7 @@ export default function Home() {
                         position: "absolute",
                         top: lotImagePosition.top,
                         left: lotImagePosition.left,
+                        zIndex: 3,
                       }}
                     />,
                     portalContainer
@@ -251,13 +252,12 @@ export default function Home() {
                 <motion.div
                   whileHover={{ scale: 1.2, rotate: 20 }}
                   whileTap={{ scale: 0.9 }}
+                  onClick={() => handleNavClick("portofolio")}
                 >
-                  <Link href="mailto:lot@vanegdom.net">
-                    <ArrowUpRight
-                      className="mb-2 text-[#F6F3EE] cursor-pointer"
-                      size={30}
-                    />
-                  </Link>
+                  <ArrowUpRight
+                    className="mb-2 text-[#F6F3EE] cursor-pointer"
+                    size={30}
+                  />
                 </motion.div>
               </div>
               <h1
