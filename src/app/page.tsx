@@ -145,10 +145,10 @@ export default function Home() {
           height={40}
           className="pl-4"
         />
-        <nav className="flex space-x-4 mr-4 pr-4 justify-between">
+        <nav className="flex space-x-4 justify-between sm:items-center sm:pr-4 pr-0">
           <button
             onClick={() => handleNavClick("home")}
-            className={`text-[#076447] hover:text-[#F6F3EE] ${
+            className={`text-[#076447] hover:text-[#F6F3EE] px-5 ${
               currentSection === "home" ? "border-b-2 border-[#076447]" : ""
             }`}
           >
@@ -156,13 +156,21 @@ export default function Home() {
           </button>
           <button
             onClick={() => handleNavClick("portofolio")}
-            className={`text-[#076447] hover:text-[#F6F3EE] ${
+            className={`text-[#076447] hover:text-[#F6F3EE] px-5 ${
               currentSection === "portofolio"
                 ? "border-b-2 border-[#076447]"
                 : ""
             }`}
           >
             <h3>PORTOFOLIO</h3>
+          </button>
+          <button
+            onClick={() => handleNavClick("contact")}
+            className={`text-[#076447] hover:text-[#F6F3EE] px-5 ${
+              currentSection === "contact" ? "border-b-2 border-[#076447]" : ""
+            }`}
+          >
+            <h3>CONTACT</h3>
           </button>
         </nav>
       </motion.header>
