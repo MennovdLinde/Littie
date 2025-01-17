@@ -479,32 +479,188 @@ export default function Home() {
             className="grid grid-cols-1 md:grid-cols-4 gap-4 h-screen p-3"
           >
             <motion.div
-              className="bg-[#1A91D4] rounded-lg shadow-lg flex items-center justify-center h-full"
+              className="bg-[#1A91D4] rounded-lg shadow-lg flex items-center justify-center h-auto md:h-full overflow-y-auto hide-scrollbar"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <h2 className="text-[#F6F3EE]">Project 1</h2>
+              <div className="flex-row h-full">
+                <h2 className="text-[#F6F3EE] whitespace-nowrap text-center p-2">
+                  art exhibition kane
+                </h2>
+                <Image
+                  src="/Opdracht-1a-min.JPG"
+                  alt="art exhibition kane 1"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg mb-2"
+                />
+                <Image
+                  src="/Opdracht-1b-min.JPG"
+                  alt="art exhibition kane 2"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg mb-2"
+                />
+                <Image
+                  src="/Opdracht-1c-min.JPG"
+                  alt="art exhibition kane 3"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg mb-2"
+                />
+                <Image
+                  src="/Opdracht-1d-min.JPG"
+                  alt="art exhibition kane 4"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg mb-2"
+                />
+                <Image
+                  src="/Opdracht-1e-min.JPG"
+                  alt="art exhibition kane 5"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg"
+                />
+              </div>
             </motion.div>
             <motion.div
-              className="bg-[#EDCCE3] rounded-lg shadow-lg flex items-center justify-center h-full"
+              className="bg-[#EDCCE3] rounded-lg shadow-lg flex items-center justify-center h-auto md:h-full overflow-y-auto hide-scrollbar"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <h2 className="text-[#F6F3EE]">Project 2</h2>
+              <div className="flex-row h-full">
+                <h2 className="text-[#F6F3EE] whitespace-nowrap text-center p-2">
+                  SlipIn
+                </h2>
+                <Image
+                  src="/Opdracht-4a-min.png"
+                  alt="Opdracht-4"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg mb-2"
+                />
+                <Image
+                  src="/Opdracht-4b-min.png"
+                  alt="Opdracht-4"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg mb-2"
+                />
+                <Image
+                  src="/Opdracht-4c-min.png"
+                  alt="Opdracht-4"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg mb-2"
+                />
+                <Image
+                  src="/Opdracht-4d-min.png"
+                  alt="Opdracht-4"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg mb-2"
+                />
+                <Image
+                  src="/Opdracht-4e-min.png"
+                  alt="Opdracht-4"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg mb-2"
+                />
+                <Image
+                  src="/Opdracht-4f-min.png"
+                  alt="Opdracht-4"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg"
+                />
+              </div>
             </motion.div>
             <motion.div
-              className="bg-[#076447] rounded-lg shadow-lg flex items-center justify-center h-full"
+              className="bg-[#076447] rounded-lg shadow-lg flex items-center justify-center h-auto md:h-full overflow-y-auto hide-scrollbar"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <h2 className="text-[#F6F3EE]">Project 3</h2>
+              <div className="flex-row h-full">
+                <h2 className="text-[#F6F3EE] whitespace-nowrap text-center p-2">
+                  take it to the bridge
+                </h2>
+                <Image
+                  src="/Opdracht-3a-min.png"
+                  alt="Opdracht-3a"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg mb-2"
+                />
+                <Image
+                  src="/Opdracht-3b-min.png"
+                  alt="Opdracht-3b"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg mb-2"
+                />
+                <Image
+                  src="/Opdracht-3c-min.png"
+                  alt="Opdracht-3c"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg mb-2"
+                />
+                <Image
+                  src="/Opdracht-3d-min.png"
+                  alt="Opdracht-3d"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg mb-2"
+                />
+              </div>
             </motion.div>
             <motion.div
-              className="bg-[#F76F2A] rounded-lg shadow-lg flex items-center justify-center h-full"
+              className="bg-[#F76F2A] rounded-lg shadow-lg flex items-center justify-center h-auto md:h-full overflow-y-auto hide-scrollbar"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <h2 className="text-[#F6F3EE]">Project 4</h2>
+              <div className="flex-row h-full">
+                <h2 className="text-[#F6F3EE] whitespace-nowrap text-center p-2">
+                  ep dave
+                </h2>
+                <Image
+                  src="/Opdracht-2a-min.png"
+                  alt="Opdracht-2"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg mb-2"
+                />
+                <Image
+                  src="/Opdracht-2b-min.png"
+                  alt="Opdracht-2"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg mb-2"
+                />
+                <Image
+                  src="/Opdracht-2c-min.png"
+                  alt="Opdracht-2"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg mb-2"
+                />
+                <Image
+                  src="/Opdracht-2d-min.png"
+                  alt="Opdracht-2"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg mb-2"
+                />
+                <Image
+                  src="/Opdracht-2e-min.png"
+                  alt="Opdracht-2"
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-lg shadow-lg"
+                />
+              </div>
             </motion.div>
           </div>
         )}
