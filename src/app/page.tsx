@@ -148,7 +148,7 @@ export default function Home() {
         <nav className="flex space-x-4 justify-between sm:items-center pr-0 md:pr-4">
           <button
             onClick={() => handleNavClick("home")}
-            className={`text-[#076447] hover:text-[#F6F3EE] px-1 md:px-5   ${
+            className={`text-[#076447] px-1 md:px-5   ${
               currentSection === "home" ? "border-b-2 border-[#076447]" : ""
             }`}
           >
@@ -156,7 +156,7 @@ export default function Home() {
           </button>
           <button
             onClick={() => handleNavClick("portofolio")}
-            className={`text-[#076447] hover:text-[#F6F3EE] px-1 md:px-5 ${
+            className={`text-[#076447] px-1 md:px-5 ${
               currentSection === "portofolio"
                 ? "border-b-2 border-[#076447]"
                 : ""
@@ -166,7 +166,7 @@ export default function Home() {
           </button>
           <button
             onClick={() => handleNavClick("contact")}
-            className={`text-[#076447] hover:text-[#F6F3EE] px-1 md:px-5 ${
+            className={`text-[#076447] px-1 md:px-5 ${
               currentSection === "contact" ? "border-b-2 border-[#076447]" : ""
             }`}
           >
