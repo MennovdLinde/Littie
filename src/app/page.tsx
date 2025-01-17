@@ -488,7 +488,7 @@ export default function Home() {
                   art exhibition kane
                 </h2>
                 <Image
-                  src="/Opdracht-1a-min.JPG"
+                  src="/Opdracht-1a-min.jpg"
                   alt="art exhibition kane 1"
                   width={200}
                   height={200}
@@ -502,21 +502,21 @@ export default function Home() {
                   className="object-cover rounded-lg shadow-lg mb-2"
                 />
                 <Image
-                  src="/Opdracht-1c-min.JPG"
+                  src="/Opdracht-1c-min.jpg"
                   alt="art exhibition kane 3"
                   width={200}
                   height={200}
                   className="object-cover rounded-lg shadow-lg mb-2"
                 />
                 <Image
-                  src="/Opdracht-1d-min.JPG"
+                  src="/Opdracht-1d-min.jpg"
                   alt="art exhibition kane 4"
                   width={200}
                   height={200}
                   className="object-cover rounded-lg shadow-lg mb-2"
                 />
                 <Image
-                  src="/Opdracht-1e-min.JPG"
+                  src="/Opdracht-1e-min.jpg"
                   alt="art exhibition kane 5"
                   width={200}
                   height={200}
