@@ -2,51 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @font-face {
   font-family: 'Inter';
-  src: url('/fonts/Inter-VariableFont_opsz.wght.woff') format('woff'),
-    url('/fonts/Inter-VariableFont_opsz.wght.woff2') format('woff2');
-  font-weight: 100 900;
-  font-style: normal;
+  src: url('./fonts/Inter.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Inter Italic';
-  src: url('/fonts/Inter-Italic-VariableFont_opsz.wght.woff') format('woff'),
-    url('/fonts/Inter-Italic-VariableFont_opsz.wght.woff2') format('woff2');
-  font-weight: 100 900;
-  font-style: italic;
-}
-@font-face {
   font-family: 'Kai';
-  src: url('/fonts/BebasKai.woff') format('woff'),
-    url('/fonts/BebasKai.woff2') format('woff2');
-  font-weight: 400 900;
-  font-style: normal;
+  src: url('./fonts/BebasKai.ttf') format('truetype');
 }
+
 html {
   scroll-behavior: smooth;
 }
 
-h3 {
+body,
+h4,
+h5,
+h6 {
   font-family: 'Inter';
   font-weight: 500;
 }
 
 h1 {
   font-family: 'Kai';
-  font-weight: 600;
-  font-size: 2.25rem;
-  text-transform: uppercase;
-  /* transform: scaleY(1.2); */
-  letter-spacing: -0.01em;
+  font-size: 2.70rem;
   line-height: 1.2;
+  transform: scaleY(1.1);
+    letter-spacing: 0.025em;
 }
+/* transform: scaleY(1.2); */
 
 h2 {
   font-family: 'Kai';
   font-size: 1.2rem;
   text-transform: uppercase;
+  transform: scaleY(1.1);
+    letter-spacing: 0.025em;
+  }
+  
+  h3 {
+    font-family: 'Kai';
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    transform: scaleY(1.1);
+    letter-spacing: 0.025em;
 }
 
 @layer utilities {
@@ -55,13 +56,6 @@ h2 {
   }
 }
 
-@media (max-width: 768px) {
-
-  h1,
-  h2 {
-    font-family: 'Kai';
-  }
-}
 .hide-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;

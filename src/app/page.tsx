@@ -148,15 +148,21 @@ export default function Home() {
         <nav className="flex space-x-4 mr-4 pr-4 justify-between">
           <button
             onClick={() => handleNavClick("home")}
-            className="text-[#076447] hover:text-[white]"
+            className={`text-[#076447] hover:text-[#F6F3EE] ${
+              currentSection === "home" ? "border-b-2 border-[#076447]" : ""
+            }`}
           >
-            <h2>HOME</h2>
+            <h3>ABOUT</h3>
           </button>
           <button
-            onClick={() => handleNavClick("projects")}
-            className="text-[#076447] hover:text-[white]"
+            onClick={() => handleNavClick("portofolio")}
+            className={`text-[#076447] hover:text-[#F6F3EE] ${
+              currentSection === "portofolio"
+                ? "border-b-2 border-[#076447]"
+                : ""
+            }`}
           >
-            <h2>PROJECTS</h2>
+            <h3>PORTOFOLIO</h3>
           </button>
         </nav>
       </motion.header>
@@ -238,14 +244,16 @@ export default function Home() {
                   whileHover={{ scale: 1.2, rotate: 20 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <ArrowUpRight
-                    className="mb-2 text-[#F6F3EE] cursor-pointer"
-                    size={30}
-                  />
+                  <Link href="mailto:lot@vanegdom.net">
+                    <ArrowUpRight
+                      className="mb-2 text-[#F6F3EE] cursor-pointer"
+                      size={30}
+                    />
+                  </Link>
                 </motion.div>
               </div>
               <h1
-                className="text-[#F6F3EE] ms-1 relative"
+                className="text-[#F6F3EE] ms-1 w-10"
                 style={{ marginTop: -30 }}
               >
                 Portofolio
@@ -383,23 +391,12 @@ export default function Home() {
               variants={isHomeRefreshed ? itemVariants : undefined}
               className="bg-[#F6F3EE] p-6 rounded-2xl shadow-lg flex flex-col justify-between col-span-12 md:col-span-6 lg:col-span-4 row-span-2"
             >
-              <div className="flex justify-end">
-                <motion.div
-                  whileHover={{ scale: 1.2, rotate: 20 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <ArrowUpRight
-                    className="mb-2 text-[#F6F3EE] cursor-pointer"
-                    size={30}
-                  />
-                </motion.div>
-              </div>
-              <h3 className="text-[#076447]">
+              <h4 className="text-[#076447] mt-auto">
                 Litttie brings stories to life with bold visuals, offering
                 creative solutions in graphic design and illustration—from
                 unique logos and branding to impactful designs for print and
                 digital platforms.
-              </h3>
+              </h4>
             </motion.div>
 
             <motion.div
@@ -419,9 +416,9 @@ export default function Home() {
                   </Link>
                 </motion.div>
               </div>
-              <h3 className="text-[#F6F3EE] mb-auto" style={{ marginTop: -30 }}>
+              <h4 className="text-[#F6F3EE] mb-auto" style={{ marginTop: -30 }}>
                 Questions?
-              </h3>
+              </h4>
               <h1 className="text-[#EDCCE3] text-opacity-80 mt-auto">
                 CONTACT
               </h1>
@@ -468,35 +465,38 @@ export default function Home() {
             </motion.div>
           </div>
         )}
-        {currentSection === "projects" && (
-          <div id="projects" className="grid grid-cols-4 gap-4 h-screen p-3">
+        {currentSection === "portofolio" && (
+          <div
+            id="portofolio"
+            className="grid grid-cols-1 md:grid-cols-4 gap-4 h-screen p-3"
+          >
             <motion.div
-              className="bg-[#FFDDC1] rounded-lg shadow-lg flex items-center justify-center h-full"
+              className="bg-[#1A91D4] rounded-lg shadow-lg flex items-center justify-center h-full"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <h2 className="text-[#333]">Project 1</h2>
+              <h2 className="text-[#F6F3EE]">Project 1</h2>
             </motion.div>
             <motion.div
-              className="bg-[#C1FFDD] rounded-lg shadow-lg flex items-center justify-center h-full"
+              className="bg-[#EDCCE3] rounded-lg shadow-lg flex items-center justify-center h-full"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <h2 className="text-[#333]">Project 2</h2>
+              <h2 className="text-[#F6F3EE]">Project 2</h2>
             </motion.div>
             <motion.div
-              className="bg-[#C1D9FF] rounded-lg shadow-lg flex items-center justify-center h-full"
+              className="bg-[#076447] rounded-lg shadow-lg flex items-center justify-center h-full"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <h2 className="text-[#333]">Project 3</h2>
+              <h2 className="text-[#F6F3EE]">Project 3</h2>
             </motion.div>
             <motion.div
-              className="bg-[#E4C1FF] rounded-lg shadow-lg flex items-center justify-center h-full"
+              className="bg-[#F76F2A] rounded-lg shadow-lg flex items-center justify-center h-full"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <h2 className="text-[#333]">Project 4</h2>
+              <h2 className="text-[#F6F3EE]">Project 4</h2>
             </motion.div>
           </div>
         )}
