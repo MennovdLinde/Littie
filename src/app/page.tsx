@@ -8,6 +8,10 @@ import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { createPortal } from "react-dom";
 import CustomSlider from "./customSlider";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
 import "./globals.css";
 
 export default function Home() {
@@ -124,6 +128,69 @@ export default function Home() {
 
   const toggleDiv = (index: number) => {
     setOpenDivIndex(openDivIndex === index ? null : index); // Toggle div state
+  };
+
+  const portfolioItems = [
+    {
+      id: 1,
+      title: "art exhibition kane",
+      bgColor: "#1A91D4",
+      images: [
+        "/Opdracht-1a-min.jpg",
+        "/Opdracht-1b-min.JPG",
+        "/Opdracht-1c-min.jpg",
+        "/Opdracht-1d-min.jpg",
+      ],
+    },
+    {
+      id: 2,
+      title: "SlipIn",
+      bgColor: "#EDCCE3",
+      images: [
+        "/Opdracht-4a-min.png",
+        "/Opdracht-4b-min.png",
+        "/Opdracht-4c-min.png",
+        "/Opdracht-4d-min.png",
+      ],
+    },
+    {
+      id: 3,
+      title: "take it to the bridge",
+      bgColor: "#076447",
+      images: [
+        "/Opdracht-3a-min.png",
+        "/Opdracht-3b-min.png",
+        "/Opdracht-3c-min.png",
+        "/Opdracht-3d-min.png",
+      ],
+    },
+    {
+      id: 4,
+      title: "ep dave",
+      bgColor: "#F76F2A",
+      images: [
+        "/Opdracht-2a-min.png",
+        "/Opdracht-2b-min.png",
+        "/Opdracht-2c-min.png",
+        "/Opdracht-2d-min.png",
+      ],
+    },
+  ];
+
+  const visibleItems = 3; // Number of visible items at a time
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    if (currentIndex < portfolioItems.length - visibleItems) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const prevSlide = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
   };
 
   return (
@@ -474,194 +541,149 @@ export default function Home() {
           </div>
         )}
         {currentSection === "portofolio" && (
+          <div id="portofolio" className="relative w-full">
+            <Swiper
+              modules={[Navigation]}
+              spaceBetween={20}
+              slidesPerView={3}
+              navigation
+              loop={true}
+              speed={600}
+              breakpoints={{
+                768: { slidesPerView: 3 },
+                480: { slidesPerView: 1 },
+              }}
+              className="portfolio-swiper hidden md:block"
+            >
+              {portfolioItems.map((item) => (
+                <SwiperSlide key={item.id}>
+                  <div
+                    className="rounded-lg shadow-lg flex items-center justify-center p-5"
+                    style={{ backgroundColor: item.bgColor }}
+                  >
+                    <div className="flex flex-col h-full">
+                      <h2 className="text-[#F6F3EE] whitespace-nowrap text-center p-2">
+                        {item.title}
+                      </h2>
+
+                      <div className="flex flex-row gap-5">
+                        {item.images.slice(0, 2).map((img, imgIndex) => (
+                          <Image
+                            key={imgIndex}
+                            src={img}
+                            alt={`${item.title} ${imgIndex + 1}`}
+                            width={150}
+                            height={150}
+                            className="object-cover rounded-lg shadow-lg"
+                          />
+                        ))}
+                      </div>
+
+                      <div className="my-auto">
+                        <h4 className="text-center">Beschrijving project</h4>
+                        <h4 className="text-center">Beschrijving project</h4>
+                        <h4 className="text-center">Beschrijving project</h4>
+                        <h4 className="text-center">Beschrijving project</h4>
+                      </div>
+
+                      <div className="flex flex-row gap-5 mb-5">
+                        {item.images.slice(2).map((img, imgIndex) => (
+                          <Image
+                            key={imgIndex}
+                            src={img}
+                            alt={`${item.title} ${imgIndex + 3}`}
+                            width={150}
+                            height={150}
+                            className="object-cover rounded-lg shadow-lg"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <div className="flex flex-col gap-5 md:hidden">
+              {portfolioItems.map((item) => (
+                <div
+                  key={item.id}
+                  className="rounded-lg shadow-lg flex flex-col items-center justify-center p-5"
+                  style={{ backgroundColor: item.bgColor }}
+                >
+                  <h2 className="text-[#F6F3EE] whitespace-nowrap text-center p-2">
+                    {item.title}
+                  </h2>
+
+                  <div className="flex flex-row gap-5">
+                    {item.images.slice(0, 2).map((img, imgIndex) => (
+                      <Image
+                        key={imgIndex}
+                        src={img}
+                        alt={`${item.title} ${imgIndex + 1}`}
+                        width={150}
+                        height={150}
+                        className="object-cover rounded-lg shadow-lg"
+                      />
+                    ))}
+                  </div>
+
+                  <div className="my-auto">
+                    <h4 className="text-center">Beschrijving project</h4>
+                    <h4 className="text-center">Beschrijving project</h4>
+                    <h4 className="text-center">Beschrijving project</h4>
+                    <h4 className="text-center">Beschrijving project</h4>
+                  </div>
+
+                  <div className="flex flex-row gap-5 mb-5">
+                    {item.images.slice(2).map((img, imgIndex) => (
+                      <Image
+                        key={imgIndex}
+                        src={img}
+                        alt={`${item.title} ${imgIndex + 3}`}
+                        width={150}
+                        height={150}
+                        className="object-cover rounded-lg shadow-lg"
+                      />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+         {currentSection === "contact" && (
           <div
-            id="portofolio"
-            className="grid grid-cols-1 md:grid-cols-4 gap-4 h-screen p-3"
+            id="contact"
+            className="p-5 bg-[#1A91D4] rounded-2xl shadow-xl w-[90%] md:w-[50%] mx-auto"
           >
-            <motion.div
-              className="bg-[#1A91D4] rounded-lg shadow-lg flex items-center justify-center h-auto md:h-full overflow-y-auto hide-scrollbar"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <div className="flex-row h-full">
-                <h2 className="text-[#F6F3EE] whitespace-nowrap text-center p-2">
-                  art exhibition kane
-                </h2>
-                <Image
-                  src="/Opdracht-1a-min.jpg"
-                  alt="art exhibition kane 1"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg mb-2"
-                />
-                <Image
-                  src="/Opdracht-1b-min.JPG"
-                  alt="art exhibition kane 2"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg mb-2"
-                />
-                <Image
-                  src="/Opdracht-1c-min.jpg"
-                  alt="art exhibition kane 3"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg mb-2"
-                />
-                <Image
-                  src="/Opdracht-1d-min.jpg"
-                  alt="art exhibition kane 4"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg mb-2"
-                />
-                <Image
-                  src="/Opdracht-1e-min.jpg"
-                  alt="art exhibition kane 5"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg"
-                />
-              </div>
-            </motion.div>
-            <motion.div
-              className="bg-[#EDCCE3] rounded-lg shadow-lg flex items-center justify-center h-auto md:h-full overflow-y-auto hide-scrollbar"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <div className="flex-row h-full">
-                <h2 className="text-[#F6F3EE] whitespace-nowrap text-center p-2">
-                  SlipIn
-                </h2>
-                <Image
-                  src="/Opdracht-4a-min.png"
-                  alt="Opdracht-4"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg mb-2"
-                />
-                <Image
-                  src="/Opdracht-4b-min.png"
-                  alt="Opdracht-4"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg mb-2"
-                />
-                <Image
-                  src="/Opdracht-4c-min.png"
-                  alt="Opdracht-4"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg mb-2"
-                />
-                <Image
-                  src="/Opdracht-4d-min.png"
-                  alt="Opdracht-4"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg mb-2"
-                />
-                <Image
-                  src="/Opdracht-4e-min.png"
-                  alt="Opdracht-4"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg mb-2"
-                />
-                <Image
-                  src="/Opdracht-4f-min.png"
-                  alt="Opdracht-4"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg"
-                />
-              </div>
-            </motion.div>
-            <motion.div
-              className="bg-[#076447] rounded-lg shadow-lg flex items-center justify-center h-auto md:h-full overflow-y-auto hide-scrollbar"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <div className="flex-row h-full">
-                <h2 className="text-[#F6F3EE] whitespace-nowrap text-center p-2">
-                  take it to the bridge
-                </h2>
-                <Image
-                  src="/Opdracht-3a-min.png"
-                  alt="Opdracht-3a"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg mb-2"
-                />
-                <Image
-                  src="/Opdracht-3b-min.png"
-                  alt="Opdracht-3b"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg mb-2"
-                />
-                <Image
-                  src="/Opdracht-3c-min.png"
-                  alt="Opdracht-3c"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg mb-2"
-                />
-                <Image
-                  src="/Opdracht-3d-min.png"
-                  alt="Opdracht-3d"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg mb-2"
-                />
-              </div>
-            </motion.div>
-            <motion.div
-              className="bg-[#F76F2A] rounded-lg shadow-lg flex items-center justify-center h-auto md:h-full overflow-y-auto hide-scrollbar"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <div className="flex-row h-full">
-                <h2 className="text-[#F6F3EE] whitespace-nowrap text-center p-2">
-                  ep dave
-                </h2>
-                <Image
-                  src="/Opdracht-2a-min.png"
-                  alt="Opdracht-2"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg mb-2"
-                />
-                <Image
-                  src="/Opdracht-2b-min.png"
-                  alt="Opdracht-2"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg mb-2"
-                />
-                <Image
-                  src="/Opdracht-2c-min.png"
-                  alt="Opdracht-2"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg mb-2"
-                />
-                <Image
-                  src="/Opdracht-2d-min.png"
-                  alt="Opdracht-2"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg mb-2"
-                />
-                <Image
-                  src="/Opdracht-2e-min.png"
-                  alt="Opdracht-2"
-                  width={200}
-                  height={200}
-                  className="object-cover rounded-lg shadow-lg"
-                />
-              </div>
-            </motion.div>
+            <h2 className=" text-center text-2xl mb-4">
+              Contact
+            </h2>
+            <form className="flex flex-col space-y-4 mx-auto">
+              <input
+                type="text"
+                placeholder="Naam"
+                className="p-3 rounded-lg shadow-md"
+                required
+              />
+              <input
+                type="email"
+                placeholder="E-mailadres"
+                className="p-3 rounded-lg shadow-md"
+                required
+              />
+              <textarea
+                placeholder="Uw bericht"
+                className="p-3 rounded-lg shadow-md h-32"
+                required
+              ></textarea>
+              <button
+                type="submit"
+                className=" text-white p-3 rounded-lg shadow-md hover:bg-opacity-90"
+              >
+                Verstuur
+              </button>
+            </form>
           </div>
         )}
       </div>
