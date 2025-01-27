@@ -635,12 +635,12 @@ export default function Home() {
             </div>
           </div>
         )}
-         {currentSection === "contact" && (
+        {currentSection === "contact" && (
           <div
             id="contact"
-            className="p-5 bg-[#1A91D4] rounded-2xl shadow-xl w-[90%] md:w-[50%] mx-auto"
+            className="p-5 bg-[#F6F3EE] rounded-2xl shadow-xl w-[90%] md:w-[50%] mx-auto"
           >
-            <h2 className=" text-center text-2xl mb-4">
+            <h2 className="text-[#076447] text-center text-2xl mb-4">
               Contact
             </h2>
             <form className="flex flex-col space-y-4 mx-auto">
@@ -663,7 +663,7 @@ export default function Home() {
               ></textarea>
               <button
                 type="submit"
-                className=" text-white p-3 rounded-lg shadow-md hover:bg-opacity-90"
+                className=" text-[#F6F3EE] bg-[#076447] p-3 rounded-lg shadow-md hover:bg-opacity-90"
               >
                 Verstuur
               </button>
