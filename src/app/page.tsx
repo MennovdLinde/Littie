@@ -177,22 +177,6 @@ export default function Home() {
     },
   ];
 
-  const visibleItems = 3; // Number of visible items at a time
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = () => {
-    if (currentIndex < portfolioItems.length - visibleItems) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
-
-  const prevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
-
   return (
     <motion.div
       ref={scrollRef}
