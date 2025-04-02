@@ -163,11 +163,11 @@ export default function Home() {
       description: "whether for peronal projects or for clients, littie creates dstinct, abstract illustrations. each piece is designed to capture attention, tell a story, and add a unique visual flair to any project.",
       descriptionColor: "black",
       images: [
-        "/porto-illus-1.jpg",
-        "/porto-illus-2.jpg",
-        "/porto-illus-3.jpg",
+        "/porto-illus-1.png",
+        "/porto-illus-2.png",
+        "/porto-illus-3.png",
         "/porto-illus-4.png",
-        "/porto-illus-5.jpg",
+        "/porto-illus-5.png",
       ],
     },
     {
