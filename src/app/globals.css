@@ -19,7 +19,6 @@ html {
 
 body,
 h4,
-h5,
 h6 {
   font-family: 'Inter';
   font-weight: 500;
@@ -41,10 +40,11 @@ h1 {
 
 h2 {
   font-family: 'Kai';
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  line-height: 1.2;
   text-transform: uppercase;
-  transform: scaleY(1.1);
-    letter-spacing: 0.025em;
+  transform: scaleY(1.2);
+    letter-spacing: 0.02em;
   }
   
   h3 {
@@ -53,6 +53,14 @@ h2 {
     text-transform: uppercase;
     transform: scaleY(1.1);
     letter-spacing: 0.025em;
+}
+
+h5 {
+  font-family: 'Kai';
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  transform: scaleY(1.1);
+  letter-spacing: 0.025em;
 }
 
 @layer utilities {

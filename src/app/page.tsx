@@ -88,7 +88,7 @@ export default function Home() {
           scale: 1,
           x: 0,
           y: 0,
-          height: 440,
+          height: "100%",
           duration: 1,
           ease: "expo.out",
           delay: 1,
@@ -133,46 +133,65 @@ export default function Home() {
   const portfolioItems = [
     {
       id: 1,
-      title: "art exhibition kane",
-      bgColor: "#1A91D4",
+      title: "LOGO DESIGN",
+      titleColor: "#076447",
+      description: "littie makes logo's based on your preferences, and always with her own distinct style. for more information, you can contact litttie",
+      descriptionColor: "black",
+      bgColor: "#076447",
+      title2: "process",
+      description2: [
+        "1. DISCOVERY",
+        "I begin by understanding your goals, target audience, and unique challenges. This phase involves research and collaboration to establish a clear direction.",
+        "2. IDEATION",
+        "I explore creative ideas and concepts, focusing on designs that are both visually appealing and strategically aligned with your needs.",
+        "3. DESIGN",
+        "Based on your feedback, I refine the selected concept into a final design that embodies your brand and vision.",
+        "4. IMPLEMENTATION",
+        "Once the design is complete, I deliver a comprehensive logo package tailored for your use across all platforms and formats, ensuring you're fully equipped to bring your brand to life.",
+      ],
       images: [
-        "/Opdracht-1a-min.jpg",
-        "/Opdracht-1b-min.JPG",
-        "/Opdracht-1c-min.jpg",
-        "/Opdracht-1d-min.jpg",
+        "/porto-logo-1.png",
+        "/Opdracht-3b-min.png",
+        "/Opdracht-3a-min.png",
+        "/porto-logo-2.png",
       ],
     },
     {
       id: 2,
-      title: "SlipIn",
-      bgColor: "#EDCCE3",
+      title: "illustration",
+      titleColor: "#f8bcd2",
+      description: "whether for peronal projects or for clients, littie creates dstinct, abstract illustrations. each piece is designed to capture attention, tell a story, and add a unique visual flair to any project.",
+      descriptionColor: "black",
       images: [
-        "/Opdracht-4a-min.png",
-        "/Opdracht-4b-min.png",
-        "/Opdracht-4c-min.png",
-        "/Opdracht-4d-min.png",
+        "/porto-illus-1.jpg",
+        "/porto-illus-2.jpg",
+        "/porto-illus-3.jpg",
+        "/porto-illus-4.png",
+        "/porto-illus-5.jpg",
       ],
     },
     {
       id: 3,
-      title: "take it to the bridge",
-      bgColor: "#076447",
-      images: [
-        "/Opdracht-3a-min.png",
-        "/Opdracht-3b-min.png",
-        "/Opdracht-3c-min.png",
-        "/Opdracht-3d-min.png",
-      ],
-    },
-    {
-      id: 4,
-      title: "ep dave",
+      title: "graphic design",
+      titleColor: "#F76F2A",
+      description: "bringing creativity and attention to detail. litttie crafts designs that communicate efficiently and leave a lasting impression. from branding to layouts and costum visuals.",
+      descriptionColor: "#076447",
       bgColor: "#F76F2A",
+      title2: "process",
+      description2: [
+        "1. DISCOVERY",
+        "I begin by understanding your goals, target audience, and unique challenges. This phase involves research and collaboration to establish a clear direction.",
+        "2. IDEATION",
+        "I explore creative ideas and concepts, focusing on designs that are both visually appealing and strategically aligned with your needs.",
+        "3. DESIGN",
+        "Based on your feedback, I refine the selected concept into a final design that embodies your brand and vision.",
+        "4. IMPLEMENTATION",
+        "Once the design is complete, I deliver a comprehensive logo package tailored for your use across all platforms and formats, ensuring you're fully equipped to bring your brand to life.",
+      ],
       images: [
-        "/Opdracht-2a-min.png",
-        "/Opdracht-2b-min.png",
-        "/Opdracht-2c-min.png",
-        "/Opdracht-2d-min.png",
+        "/porto-graph-1.jpg",
+        "/porto-graph-2.jpg",
+        "/porto-graph-3.jpg",
       ],
     },
   ];
@@ -259,8 +278,8 @@ export default function Home() {
                 <Image
                   src="/Lot.png"
                   alt="Lot"
-                  width={320}
-                  height={320}
+                  width={340}
+                  height={340}
                   className="max-w-[350px] h-auto object-cover"
                 />
               </div>
@@ -269,8 +288,8 @@ export default function Home() {
                   ref={lotImageRef}
                   src="/Lot.png"
                   alt="Lot"
-                  width={320}
-                  height={320}
+                  width={340}
+                  height={340}
                   className="max-w-[350px] h-auto object-cover"
                 />
                 {animationDone &&
@@ -280,8 +299,8 @@ export default function Home() {
                     <Image
                       src="/Lot.png"
                       alt="Lot"
-                      width={320}
-                      height={320}
+                      width={340}
+                      height={340}
                       className="max-w-[350px] h-auto object-cover hidden md:block"
                       style={{
                         position: "absolute",
@@ -528,73 +547,147 @@ export default function Home() {
           <div id="portofolio" className="relative w-full">
             <Swiper
               modules={[Navigation]}
+              navigation={{
+                prevEl: ".swiper-button-prev-custom",
+                nextEl: ".swiper-button-next-custom",
+              }}
               spaceBetween={20}
-              slidesPerView={3}
-              navigation
+              slidesPerView={1}
               loop={true}
               speed={600}
-              breakpoints={{
-                768: { slidesPerView: 3 },
-                480: { slidesPerView: 1 },
-              }}
               className="portfolio-swiper hidden md:block"
             >
               {portfolioItems.map((item) => (
                 <SwiperSlide key={item.id}>
-                  <div
-                    className="rounded-lg shadow-lg flex items-center justify-center p-5"
-                    style={{ backgroundColor: item.bgColor }}
-                  >
-                    <div className="flex flex-col h-full">
-                      <h2 className="text-[#F6F3EE] whitespace-nowrap text-center p-2">
-                        {item.title}
-                      </h2>
-
-                      <div className="flex flex-row gap-5">
-                        {item.images.slice(0, 2).map((img, imgIndex) => (
-                          <Image
-                            key={imgIndex}
-                            src={img}
-                            alt={`${item.title} ${imgIndex + 1}`}
-                            width={150}
-                            height={150}
-                            className="object-cover rounded-lg shadow-lg"
-                          />
-                        ))}
-                      </div>
-
-                      <div className="my-auto">
-                        <h4 className="text-center">Beschrijving project</h4>
-                        <h4 className="text-center">Beschrijving project</h4>
-                        <h4 className="text-center">Beschrijving project</h4>
-                        <h4 className="text-center">Beschrijving project</h4>
-                      </div>
-
-                      <div className="flex flex-row gap-5 mb-5">
-                        {item.images.slice(2).map((img, imgIndex) => (
-                          <Image
-                            key={imgIndex}
-                            src={img}
-                            alt={`${item.title} ${imgIndex + 3}`}
-                            width={150}
-                            height={150}
-                            className="object-cover rounded-lg shadow-lg"
-                          />
-                        ))}
+                  <div className="grid grid-cols-24 grid-rows-6 gap-4 h-[90vh] w-[95%] mx-auto">
+                    <div className="row-span-3 col-span-10 bg-[#F6F3EE] rounded-2xl shadow-lg">
+                      <div className="ms-[10%] mt-[5%] w-[75%]">
+                        <h1
+                          className="text-start p-3"
+                          style={{ color: item.titleColor }}
+                        >
+                          {item.title}
+                        </h1>
+                        <h2
+                          className="text-start p-3 text-md"
+                          style={{ color: item.descriptionColor }}
+                        >
+                          {item.description}
+                        </h2>
                       </div>
                     </div>
+
+                    {item.id === 3 ? (
+                      <div className="row-span-6 col-span-6 bg-[#F6F3EE] rounded-2xl shadow-lg">
+                        <Image
+                          src={item.images[0]}
+                          width={200}
+                          height={400}
+                          className="w-full h-full object-cover rounded-2xl"
+                        />
+                      </div>
+                    ) : (
+                      <div className="row-span-3 col-span-6 bg-[#F6F3EE] rounded-2xl shadow-lg">
+                        <Image
+                          src={item.images[0]}
+                          width={200}
+                          height={200}
+                          className="w-full h-full object-cover rounded-2xl"
+                        />
+                      </div>
+                    )}
+
+                    {item.id !== 2 ? (
+                      <div
+                        className="row-span-6 col-span-8 rounded-2xl shadow-lg"
+                        style={{ backgroundColor: item.bgColor }}
+                      >
+                        <h1 className="text-white whitespace-nowrap text-center py-[5%]">
+                          {item.title2}
+                        </h1>
+                        {Array.isArray(item.description2) &&
+                          item.description2.map((text, idx) => {
+                            const isTitle = idx % 2 === 0; // Titles are at even indexes
+                            return isTitle ? (
+                              <div
+                                key={idx}
+                                className="flex items-start gap-3 text-white px-4"
+                              >
+                                <div className="bg-white text-[#076447] font-bold w-6 h-6 rounded-full flex items-center justify-center">
+                                  {text[0]}
+                                </div>
+                                <h2 className="uppercase">{text.slice(3)}</h2>
+                              </div>
+                            ) : (
+                              <p
+                                key={idx}
+                                className="text-white text-[1vw] w-[90%] pl-9 ms-4 mb-[5%] leading-relaxed"
+                              >
+                                {text}
+                              </p>
+                            );
+                          })}
+                      </div>
+                    ) : (
+                      <div className="row-span-6 col-span-8 rounded-2xl shadow-lg">
+                        <Image
+                          src={item.images[4]}
+                          width={200}
+                          height={200}
+                          className="w-full h-full object-cover rounded-2xl"
+                        />
+                      </div>
+                    )}
+
+                    <div className="row-span-3 col-span-5 bg-[#F6F3EE] rounded-2xl shadow-lg">
+                      <Image
+                        src={item.images[1]}
+                        width={150}
+                        height={150}
+                        className="w-full h-full object-contain rounded-2xl"
+                      />
+                    </div>
+                    <div className="row-span-3 col-span-5 bg-[#F6F3EE] rounded-2xl shadow-lg">
+                      <Image
+                        src={item.images[2]}
+                        width={150}
+                        height={150}
+                        className="w-full h-full object-contain rounded-2xl"
+                      />
+                    </div>
+
+                    {item.id !== 3 ? (
+                      <div className="row-span-3 col-span-6 bg-[#F6F3EE] rounded-2xl shadow-lg">
+                        <Image
+                          src={item.images[3]}
+                          width={200}
+                          height={200}
+                          className="w-full h-full object-cover rounded-2xl"
+                        />
+                      </div>
+                    ) : null}
                   </div>
                 </SwiperSlide>
               ))}
             </Swiper>
-            <div className="flex flex-col gap-5 md:hidden">
+            <div className="absolute inset-y-0 left-[-10px] right-[-10px] hidden md:flex justify-between items-center z-10 pointer-events-none">
+              <button className="swiper-button-prev-custom h-[50vh] w-[40px] bg-[#F6F3EE]/60 hover:bg-[#F6F3EE]/90 rounded-xl flex items-center justify-center text-[#076447] text-4xl font-bold pointer-events-auto">
+                ‹
+              </button>
+              <button className="swiper-button-next-custom h-[50vh] w-[40px] bg-[#F6F3EE]/60 hover:bg-[#F6F3EE]/90 rounded-xl flex items-center justify-center text-[#076447] text-4xl font-bold pointer-events-auto">
+                ›
+              </button>
+            </div>
+            <div className="flex flex-col gap-5 w-full md:hidden">
               {portfolioItems.map((item) => (
                 <div
                   key={item.id}
-                  className="rounded-lg shadow-lg flex flex-col items-center justify-center p-5"
-                  style={{ backgroundColor: item.bgColor }}
+                  className="rounded-lg shadow-lg bg-[#F6F3EE] flex flex-col items-center justify-center p-5"
                 >
-                  <h2 className="text-[#F6F3EE] whitespace-nowrap text-center p-2">
+                  <h2
+                    className="whitespace-nowrap text-center p-2"
+                    style={{ color: item.titleColor }}
+                  >
                     {item.title}
                   </h2>
 
@@ -604,31 +697,15 @@ export default function Home() {
                         key={imgIndex}
                         src={img}
                         alt={`${item.title} ${imgIndex + 1}`}
-                        width={150}
-                        height={150}
+                        width={120}
+                        height={120}
                         className="object-cover rounded-lg shadow-lg"
                       />
                     ))}
                   </div>
 
-                  <div className="my-auto">
-                    <h4 className="text-center">Beschrijving project</h4>
-                    <h4 className="text-center">Beschrijving project</h4>
-                    <h4 className="text-center">Beschrijving project</h4>
-                    <h4 className="text-center">Beschrijving project</h4>
-                  </div>
-
-                  <div className="flex flex-row gap-5 mb-5">
-                    {item.images.slice(2).map((img, imgIndex) => (
-                      <Image
-                        key={imgIndex}
-                        src={img}
-                        alt={`${item.title} ${imgIndex + 3}`}
-                        width={150}
-                        height={150}
-                        className="object-cover rounded-lg shadow-lg"
-                      />
-                    ))}
+                  <div className="p-3" style={{ color: item.titleColor }}>
+                    <h5 className="text-left">{item.description}</h5>
                   </div>
                 </div>
               ))}
