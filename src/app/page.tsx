@@ -555,7 +555,7 @@ export default function Home() {
               slidesPerView={1}
               loop={true}
               speed={600}
-              className="portfolio-swiper hidden md:block"
+              className="hidden md:block portfolio-swiper"
             >
               {portfolioItems.map((item) => (
                 <SwiperSlide key={item.id}>
