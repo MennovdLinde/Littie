@@ -702,7 +702,6 @@ export default function Home() {
                       <Image
                         key={imgIndex}
                         src={img}
-                        alt={`${item.title} ${imgIndex + 1}`}
                         width={120}
                         height={120}
                         alt={`${item.title} ${imgIndex + 1}`}
