@@ -705,7 +705,7 @@ export default function Home() {
                         alt={`${item.title} ${imgIndex + 1}`}
                         width={120}
                         height={120}
-                        alt={`${item.title} image`}
+                        alt={`${item.title} ${imgIndex + 1}`}
                         className="object-cover rounded-lg shadow-lg"
                       />
                     ))}
