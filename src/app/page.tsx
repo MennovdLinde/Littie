@@ -583,6 +583,7 @@ export default function Home() {
                           src={item.images[0]}
                           width={200}
                           height={400}
+                          alt={`${item.title} image`}
                           className="w-full h-full object-cover rounded-2xl"
                         />
                       </div>
@@ -592,6 +593,7 @@ export default function Home() {
                           src={item.images[0]}
                           width={200}
                           height={200}
+                          alt={`${item.title} image`}
                           className="w-full h-full object-cover rounded-2xl"
                         />
                       </div>
@@ -634,6 +636,7 @@ export default function Home() {
                           src={item.images[4]}
                           width={200}
                           height={200}
+                          alt={`${item.title} image`}
                           className="w-full h-full object-cover rounded-2xl"
                         />
                       </div>
@@ -644,6 +647,7 @@ export default function Home() {
                         src={item.images[1]}
                         width={150}
                         height={150}
+                        alt={`${item.title} image`}
                         className="w-full h-full object-contain rounded-2xl"
                       />
                     </div>
@@ -652,6 +656,7 @@ export default function Home() {
                         src={item.images[2]}
                         width={150}
                         height={150}
+                        alt={`${item.title} image`}
                         className="w-full h-full object-contain rounded-2xl"
                       />
                     </div>
@@ -662,6 +667,7 @@ export default function Home() {
                           src={item.images[3]}
                           width={200}
                           height={200}
+                          alt={`${item.title} image`}
                           className="w-full h-full object-cover rounded-2xl"
                         />
                       </div>
@@ -699,6 +705,7 @@ export default function Home() {
                         alt={`${item.title} ${imgIndex + 1}`}
                         width={120}
                         height={120}
+                        alt={`${item.title} image`}
                         className="object-cover rounded-lg shadow-lg"
                       />
                     ))}
