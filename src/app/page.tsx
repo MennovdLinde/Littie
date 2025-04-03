@@ -135,7 +135,8 @@ export default function Home() {
       id: 1,
       title: "LOGO DESIGN",
       titleColor: "#076447",
-      description: "littie makes logo's based on your preferences, and always with her own distinct style. for more information, you can contact litttie",
+      description:
+        "littie makes logo's based on your preferences, and always with her own distinct style. for more information, you can contact litttie",
       descriptionColor: "black",
       bgColor: "#076447",
       title2: "process",
@@ -160,7 +161,8 @@ export default function Home() {
       id: 2,
       title: "illustration",
       titleColor: "#f8bcd2",
-      description: "whether for peronal projects or for clients, littie creates dstinct, abstract illustrations. each piece is designed to capture attention, tell a story, and add a unique visual flair to any project.",
+      description:
+        "whether for peronal projects or for clients, littie creates dstinct, abstract illustrations. each piece is designed to capture attention, tell a story, and add a unique visual flair to any project.",
       descriptionColor: "black",
       images: [
         "/porto-illus-1.png",
@@ -174,7 +176,8 @@ export default function Home() {
       id: 3,
       title: "graphic design",
       titleColor: "#F76F2A",
-      description: "bringing creativity and attention to detail. litttie crafts designs that communicate efficiently and leave a lasting impression. from branding to layouts and costum visuals.",
+      description:
+        "bringing creativity and attention to detail. litttie crafts designs that communicate efficiently and leave a lasting impression. from branding to layouts and costum visuals.",
       descriptionColor: "#076447",
       bgColor: "#F76F2A",
       title2: "process",
@@ -545,137 +548,140 @@ export default function Home() {
         )}
         {currentSection === "portofolio" && (
           <div id="portofolio" className="relative w-full">
-            <Swiper
-              modules={[Navigation]}
-              navigation={{
-                prevEl: ".swiper-button-prev-custom",
-                nextEl: ".swiper-button-next-custom",
-              }}
-              spaceBetween={20}
-              slidesPerView={1}
-              loop={true}
-              speed={600}
-              className="hidden md:block portfolio-swiper"
-            >
-              {portfolioItems.map((item) => (
-                <SwiperSlide key={item.id}>
-                  <div className="grid grid-cols-24 grid-rows-6 gap-4 h-[90vh] w-[95%] mx-auto">
-                    <div className="row-span-3 col-span-10 bg-[#F6F3EE] rounded-2xl shadow-lg">
-                      <div className="ms-[10%] mt-[5%] w-[75%]">
-                        <h1
-                          className="text-start p-3"
-                          style={{ color: item.titleColor }}
-                        >
-                          {item.title}
-                        </h1>
-                        <h2
-                          className="text-start p-3 text-md"
-                          style={{ color: item.descriptionColor }}
-                        >
-                          {item.description}
-                        </h2>
+            <div className="hidden md:block">
+              <Swiper
+                modules={[Navigation]}
+                navigation={{
+                  prevEl: ".swiper-button-prev-custom",
+                  nextEl: ".swiper-button-next-custom",
+                }}
+                spaceBetween={20}
+                slidesPerView={1}
+                loop={true}
+                speed={600}
+                className="portfolio-swiper"
+              >
+                {portfolioItems.map((item) => (
+                  <SwiperSlide key={item.id}>
+                    <div className="grid grid-cols-24 grid-rows-6 gap-4 h-[90vh] w-[95%] mx-auto">
+                      <div className="row-span-3 col-span-10 bg-[#F6F3EE] rounded-2xl shadow-lg">
+                        <div className="ms-[10%] mt-[5%] w-[75%]">
+                          <h1
+                            className="text-start p-3"
+                            style={{ color: item.titleColor }}
+                          >
+                            {item.title}
+                          </h1>
+                          <h2
+                            className="text-start p-3 text-md"
+                            style={{ color: item.descriptionColor }}
+                          >
+                            {item.description}
+                          </h2>
+                        </div>
                       </div>
-                    </div>
 
-                    {item.id === 3 ? (
-                      <div className="row-span-6 col-span-6 bg-[#F6F3EE] rounded-2xl shadow-lg">
-                        <Image
-                          src={item.images[0]}
-                          width={200}
-                          height={400}
-                          alt={`${item.title} image`}
-                          className="w-full h-full object-cover rounded-2xl"
-                        />
-                      </div>
-                    ) : (
-                      <div className="row-span-3 col-span-6 bg-[#F6F3EE] rounded-2xl shadow-lg">
-                        <Image
-                          src={item.images[0]}
-                          width={200}
-                          height={200}
-                          alt={`${item.title} image`}
-                          className="w-full h-full object-cover rounded-2xl"
-                        />
-                      </div>
-                    )}
+                      {item.id === 3 ? (
+                        <div className="row-span-6 col-span-6 bg-[#F6F3EE] rounded-2xl shadow-lg">
+                          <Image
+                            src={item.images[0]}
+                            width={200}
+                            height={400}
+                            alt={`${item.title} image`}
+                            className="w-full h-full object-cover rounded-2xl"
+                          />
+                        </div>
+                      ) : (
+                        <div className="row-span-3 col-span-6 bg-[#F6F3EE] rounded-2xl shadow-lg">
+                          <Image
+                            src={item.images[0]}
+                            width={200}
+                            height={200}
+                            alt={`${item.title} image`}
+                            className="w-full h-full object-cover rounded-2xl"
+                          />
+                        </div>
+                      )}
 
-                    {item.id !== 2 ? (
-                      <div
-                        className="row-span-6 col-span-8 rounded-2xl shadow-lg"
-                        style={{ backgroundColor: item.bgColor }}
-                      >
-                        <h1 className="text-white whitespace-nowrap text-center py-[5%]">
-                          {item.title2}
-                        </h1>
-                        {Array.isArray(item.description2) &&
-                          item.description2.map((text, idx) => {
-                            const isTitle = idx % 2 === 0; // Titles are at even indexes
-                            return isTitle ? (
-                              <div
-                                key={idx}
-                                className="flex items-start gap-3 text-white px-4"
-                              >
-                                <div className="bg-white text-[#076447] font-bold w-6 h-6 rounded-full flex items-center justify-center">
-                                  {text[0]}
+                      {item.id !== 2 ? (
+                        <div
+                          className="row-span-6 col-span-8 rounded-2xl shadow-lg"
+                          style={{ backgroundColor: item.bgColor }}
+                        >
+                          <h1 className="text-white whitespace-nowrap text-center py-[5%]">
+                            {item.title2}
+                          </h1>
+                          {Array.isArray(item.description2) &&
+                            item.description2.map((text, idx) => {
+                              const isTitle = idx % 2 === 0; // Titles are at even indexes
+                              return isTitle ? (
+                                <div
+                                  key={idx}
+                                  className="flex items-start gap-3 text-white px-4"
+                                >
+                                  <div className="bg-white text-[#076447] font-bold w-6 h-6 rounded-full flex items-center justify-center">
+                                    {text[0]}
+                                  </div>
+                                  <h2 className="uppercase">{text.slice(3)}</h2>
                                 </div>
-                                <h2 className="uppercase">{text.slice(3)}</h2>
-                              </div>
-                            ) : (
-                              <p
-                                key={idx}
-                                className="text-white text-[1vw] w-[90%] pl-9 ms-4 mb-[5%] leading-relaxed"
-                              >
-                                {text}
-                              </p>
-                            );
-                          })}
-                      </div>
-                    ) : (
-                      <div className="row-span-6 col-span-8 rounded-2xl shadow-lg">
+                              ) : (
+                                <p
+                                  key={idx}
+                                  className="text-white text-[1vw] w-[90%] pl-9 ms-4 mb-[5%] leading-relaxed"
+                                >
+                                  {text}
+                                </p>
+                              );
+                            })}
+                        </div>
+                      ) : (
+                        <div className="row-span-6 col-span-8 rounded-2xl shadow-lg">
+                          <Image
+                            src={item.images[4]}
+                            width={200}
+                            height={200}
+                            alt={`${item.title} image`}
+                            className="w-full h-full object-cover rounded-2xl"
+                          />
+                        </div>
+                      )}
+
+                      <div className="row-span-3 col-span-5 bg-[#F6F3EE] rounded-2xl shadow-lg">
                         <Image
-                          src={item.images[4]}
-                          width={200}
-                          height={200}
+                          src={item.images[1]}
+                          width={150}
+                          height={150}
                           alt={`${item.title} image`}
-                          className="w-full h-full object-cover rounded-2xl"
+                          className="w-full h-full object-contain rounded-2xl"
                         />
                       </div>
-                    )}
-
-                    <div className="row-span-3 col-span-5 bg-[#F6F3EE] rounded-2xl shadow-lg">
-                      <Image
-                        src={item.images[1]}
-                        width={150}
-                        height={150}
-                        alt={`${item.title} image`}
-                        className="w-full h-full object-contain rounded-2xl"
-                      />
-                    </div>
-                    <div className="row-span-3 col-span-5 bg-[#F6F3EE] rounded-2xl shadow-lg">
-                      <Image
-                        src={item.images[2]}
-                        width={150}
-                        height={150}
-                        alt={`${item.title} image`}
-                        className="w-full h-full object-contain rounded-2xl"
-                      />
-                    </div>
-
-                    {item.id !== 3 ? (
-                      <div className="row-span-3 col-span-6 bg-[#F6F3EE] rounded-2xl shadow-lg">
+                      <div className="row-span-3 col-span-5 bg-[#F6F3EE] rounded-2xl shadow-lg">
                         <Image
-                          src={item.images[3]}
-                          width={200}
-                          height={200}
+                          src={item.images[2]}
+                          width={150}
+                          height={150}
                           alt={`${item.title} image`}
-                          className="w-full h-full object-cover rounded-2xl"
+                          className="w-full h-full object-contain rounded-2xl"
                         />
                       </div>
-                    ) : null}
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+
+                      {item.id !== 3 ? (
+                        <div className="row-span-3 col-span-6 bg-[#F6F3EE] rounded-2xl shadow-lg">
+                          <Image
+                            src={item.images[3]}
+                            width={200}
+                            height={200}
+                            alt={`${item.title} image`}
+                            className="w-full h-full object-cover rounded-2xl"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
             <div className="absolute inset-y-0 left-[-10px] right-[-10px] hidden md:flex justify-between items-center z-10 pointer-events-none">
               <button className="swiper-button-prev-custom h-[50vh] w-[40px] bg-[#F6F3EE]/60 hover:bg-[#F6F3EE]/90 rounded-xl flex items-center justify-center text-[#076447] text-4xl font-bold pointer-events-auto">
                 ‹
