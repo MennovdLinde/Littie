@@ -173,10 +173,10 @@ export default function Home() {
         "Once the design is complete, I deliver a comprehensive logo package tailored for your use across all platforms and formats, ensuring you're fully equipped to bring your brand to life.",
       ],
       images: [
-        "/porto-logo-1.png",
-        "/Opdracht-3b-min.png",
-        "/Opdracht-3a-min.png",
-        "/porto-logo-2.png",
+        "/porto-logo-1.webp",
+        "/Opdracht-3b-min.webp",
+        "/Opdracht-3a-min.webp",
+        "/porto-logo-2.webp",
       ],
     },
     {
@@ -187,11 +187,11 @@ export default function Home() {
         "whether for peronal projects or for clients, littie creates dstinct, abstract illustrations. each piece is designed to capture attention, tell a story, and add a unique visual flair to any project.",
       descriptionColor: "black",
       images: [
-        "/porto-illus-1.png",
-        "/porto-illus-2.png",
-        "/porto-illus-3.png",
-        "/porto-illus-4.png",
-        "/porto-illus-5.png",
+        "/porto-illus-1.webp",
+        "/porto-illus-2.webp",
+        "/porto-illus-3.webp",
+        "/porto-illus-4.webp",
+        "/porto-illus-5.webp",
       ],
     },
     {
@@ -214,9 +214,9 @@ export default function Home() {
         "Once the design is complete, I deliver a comprehensive logo package tailored for your use across all platforms and formats, ensuring you're fully equipped to bring your brand to life.",
       ],
       images: [
-        "/porto-graph-1.jpg",
-        "/porto-graph-2.jpg",
-        "/porto-graph-3.jpg",
+        "/porto-graph-1.webp",
+        "/porto-graph-2.webp",
+        "/porto-graph-3.webp",
       ],
     },
   ];
@@ -385,11 +385,11 @@ export default function Home() {
                     >
                       <CustomSlider
                         images={[
-                          "/Opdracht-1a-min.jpg",
-                          "/Opdracht-1f-min.jpg",
-                          "/Opdracht-1b-min.jpg",
-                          "/porto-illus-1.png",
-                          "/Opdracht-2a-min.png",
+                          "/Opdracht-1a-min.webp",
+                          "/Opdracht-1d-min.webp",
+                          "/Opdracht-1b-min.webp",
+                          "/porto-illus-1.webp",
+                          "/Opdracht-2a-min.webp",
                         ]}
                       />
                     </motion.div>
@@ -417,10 +417,10 @@ export default function Home() {
                     >
                       <CustomSlider
                         images={[
-                          "/Opdracht-4a-min.png",
-                          "/Opdracht-3b-min.png",
-                          "/Opdracht-4e-min.png",
-                          "/Opdracht-3d-min.png",
+                          "/Opdracht-4a-min.webp",
+                          "/Opdracht-3b-min.webp",
+                          "/Opdracht-4e-min.webp",
+                          "/Opdracht-3d-min.webp",
                         ]}
                       />
                     </motion.div>
@@ -448,11 +448,11 @@ export default function Home() {
                     >
                       <CustomSlider
                         images={[
-                          "/freehand.png",
-                          "/Art-1-min.jpg",
-                          "/porto-illus-3.png",
-                          "/IMG_0157_resized_25percent.jpg",
-                          "/porto-illus-2.png",
+                          "/freehand.webp",
+                          "/Art-1-min.webp",
+                          "/porto-illus-3.webp",
+                          "/IMG_0157_resized_25percent.webp",
+                          "/porto-illus-2.webp",
                         ]}
                       />
                     </motion.div>
@@ -725,13 +725,13 @@ export default function Home() {
             <div className="flex flex-col gap-3 w-full md:w-[50%]">
               <div className="p-5 bg-[#F6F3EE] rounded-2xl shadow-xl flex-grow">
                 <h1 className="text-[#F76F2A] text-start p-5">get in touch</h1>
-                <h2 className="text-[#076447] text-start p-5 w-[75%] text-xl">
+                <h2 className="text-[#076447] text-start p-5 text-xl">
                   have a question or a project in mind? lets connect! whether
                   you&#39;re interested in a custom logo, unique illustrations,
                   or graphic design tailored to your needs, i&#39;d love to hear
                   from you
                 </h2>
-                <h2 className="text-[#076447] text-start p-5 w-[75%] text-xl">
+                <h2 className="text-[#076447] text-start p-5 text-xl">
                   you can either fill out the contact form or email me directly
                   at <span className="text-[#F76F2A]">contact@littie.nl</span>.
                   i&#39;ll get back to you as soon as possible. let&#39;s create
