@@ -727,20 +727,18 @@ export default function Home() {
                 <h1 className="text-[#F76F2A] text-start p-5">get in touch</h1>
                 <h2 className="text-[#076447] text-start p-5 w-[75%] text-xl">
                   have a question or a project in mind? lets connect! whether
-                  you're interested in a custom logo, unique illustrations, or
-                  graphic design tailored to your needs, i'd love to hear from
-                  you
+                  you&#39;re interested in a custom logo, unique illustrations,
+                  or graphic design tailored to your needs, i&#39;d love to hear
+                  from you
                 </h2>
                 <h2 className="text-[#076447] text-start p-5 w-[75%] text-xl">
                   you can either fill out the contact form or email me directly
                   at <span className="text-[#F76F2A]">contact@littie.nl</span>.
-                  i'll get back to you as soon as possible. let's create
+                  i&#39;ll get back to you as soon as possible. let&#39;s create
                   something amazing together!
                 </h2>
               </div>
-              <div
-                className="bg-[#F6F3EE] p-2 rounded-2xl shadow-lg"
-              >
+              <div className="bg-[#F6F3EE] p-2 rounded-2xl shadow-lg">
                 <div className="flex justify-end col-span-12 my-auto">
                   {[
                     {
