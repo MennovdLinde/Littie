@@ -27,6 +27,7 @@ export default function Home() {
   const [lotImagePosition, setLotImagePosition] = useState({ top: 0, left: 0 });
   const [currentSection, setCurrentSection] = useState("home");
   const [isHomeRefreshed, setIsHomeRefreshed] = useState(true);
+  const hasRunOnce = useRef(false); 
 
   const handleNavClick = (sectionId: string) => {
     setIsHomeRefreshed(false);
@@ -65,6 +66,7 @@ export default function Home() {
           });
         }
         setAnimationDone(true);
+        hasRunOnce.current = true;
       },
     });
 
@@ -125,6 +127,26 @@ export default function Home() {
     }),
     []
   );
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+  
+    if (currentSection === "home" && hasRunOnce.current) {
+      timeoutId = setTimeout(() => {
+        if (lotImageRef.current) {
+          const rect = lotImageRef.current.getBoundingClientRect();
+          setLotImagePosition({
+            top: rect.top + window.scrollY,
+            left: rect.left + window.scrollX,
+          });
+        }
+  
+        setAnimationDone(true);
+      }, 1000);
+    }
+  
+    return () => clearTimeout(timeoutId); // cleanup on unmount or rerun
+  }, [currentSection]);  
 
   const toggleDiv = (index: number) => {
     setOpenDivIndex(openDivIndex === index ? null : index); // Toggle div state
@@ -202,7 +224,7 @@ export default function Home() {
   return (
     <motion.div
       ref={scrollRef}
-      className="bg-[#AFD4E6] min-h-screen p-3 md:p-5 text-gray-200"
+      className="bg-[#AFD4E6] min-h-screen p-3 text-gray-200"
       initial="hidden"
       animate={controls}
       variants={isHomeRefreshed ? containerVariants : undefined}
@@ -216,7 +238,8 @@ export default function Home() {
           alt="Logo"
           width={70}
           height={40}
-          className="pl-4"
+          className="pl-4 cursor-pointer"
+          onClick={() => handleNavClick("home")}
         />
         <nav className="flex space-x-4 justify-between sm:items-center pr-0 md:pr-4">
           <button
@@ -250,13 +273,16 @@ export default function Home() {
 
       <div>
         {currentSection === "home" && (
-          <div id="home" className="grid grid-cols-12 gap-4">
+          <div
+            id="home"
+            className="min-h-screen md:min-h-[86vh] md:h-[86vh] grid grid-cols-12 gap-4"
+          >
             <motion.div
               variants={isHomeRefreshed ? itemVariants : undefined}
               className="bg-[#F6F3EE] p-6 rounded-2xl shadow-lg col-span-12 md:col-span-6 lg:col-span-5 flex flex-col justify-evenly row-span-2"
             >
-              <div className="flex row items-center">
-                <h1 className="mb-2 text-[#076447]">
+              <div className="flex row">
+                <h1 className="p-0 md:p-5 text-[#076447]">
                   Design that tells a story, illustrations that speak. <br></br>
                   <span className="text-[#F76F2A]">Welcome to Litttie!</span>
                 </h1>
@@ -269,7 +295,7 @@ export default function Home() {
                 alt="Swirl"
                 width={1000}
                 height={200}
-                className="absolute z-[2] top-[7vh] left-[55%] transform -translate-x-1/2 -translate-y-1/4 hidden md:block animate-fadeIn"
+                className="absolute z-[2] top-[7vh] left-[55%] transform -translate-x-1/2 -translate-y-1/4 rotate-[10deg] hidden md:block animate-fadeIn"
               />
             )}
 
@@ -293,7 +319,7 @@ export default function Home() {
                   alt="Lot"
                   width={340}
                   height={340}
-                  className="max-w-[350px] h-auto object-cover"
+                  className="w-[19vw] h-auto object-contain"
                 />
                 {animationDone &&
                   portalContainer &&
@@ -304,7 +330,7 @@ export default function Home() {
                       alt="Lot"
                       width={340}
                       height={340}
-                      className="max-w-[350px] h-auto object-cover hidden md:block"
+                      className="w-[19vw] h-auto object-contain hidden md:block"
                       style={{
                         position: "absolute",
                         top: lotImagePosition.top,
@@ -319,7 +345,7 @@ export default function Home() {
 
             <motion.div
               variants={isHomeRefreshed ? itemVariants : undefined}
-              className="bg-[#1A91D4] z-[3] p-4 rounded-2xl shadow-lg flex flex-col justify-evenly col-span-12 md:col-span-7 lg:col-span-4 row-span-3 min-h-[80vh] sm:max-h-[82vh] overflow-y-auto hide-scrollbar"
+              className="bg-[#1A91D4] z-[3] p-4 rounded-2xl shadow-lg flex flex-col justify-evenly col-span-12 md:col-span-7 lg:col-span-4 row-span-3 h-[70vh] md:h-[auto] overflow-y-auto md:overflow-hidden"
             >
               <div className="flex justify-end">
                 <motion.div
@@ -346,7 +372,7 @@ export default function Home() {
                   onClick={() => toggleDiv(0)}
                   className="div-header"
                 >
-                  <h2 className="text-left">Freehand Illustrations</h2>
+                  <h2 className="text-left">Graphic design</h2>
                 </motion.div>
                 <AnimatePresence>
                   {openDivIndex === 0 && (
@@ -354,18 +380,18 @@ export default function Home() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "fit-content", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.5, ease: "easeOut" }}
+                      transition={{ duration: 0.5 }}
                       className="div-content"
                     >
-                      <div className="relative mx-auto overflow-hidden rounded-lg">
-                        <Image
-                          src="/freehand.png"
-                          alt="freehand"
-                          width={250}
-                          height={200}
-                          className="rounded-lg object-cover mx-auto mb-2"
-                        />
-                      </div>
+                      <CustomSlider
+                        images={[
+                          "/Opdracht-1a-min.jpg",
+                          "/Opdracht-1f-min.jpg",
+                          "/Opdracht-1b-min.jpg",
+                          "/porto-illus-1.png",
+                          "/Opdracht-2a-min.png",
+                        ]}
+                      />
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -378,7 +404,7 @@ export default function Home() {
                   onClick={() => toggleDiv(1)}
                   className="div-header"
                 >
-                  <h2 className="text-left">EP - Dave</h2>
+                  <h2 className="text-left">Logo design</h2>
                 </motion.div>
                 <AnimatePresence>
                   {openDivIndex === 1 && (
@@ -391,11 +417,10 @@ export default function Home() {
                     >
                       <CustomSlider
                         images={[
-                          "/Opdracht-2a-min.png",
-                          "/Opdracht-2b-min.png",
-                          "/Opdracht-2c-min.png",
-                          "/Opdracht-2d-min.png",
-                          "/Opdracht-2e-min.png",
+                          "/Opdracht-4a-min.png",
+                          "/Opdracht-3b-min.png",
+                          "/Opdracht-4e-min.png",
+                          "/Opdracht-3d-min.png",
                         ]}
                       />
                     </motion.div>
@@ -410,7 +435,7 @@ export default function Home() {
                   onClick={() => toggleDiv(2)}
                   className="div-header"
                 >
-                  <h2 className="text-left">Take it to the Bridge</h2>
+                  <h2 className="text-left">Illustrations</h2>
                 </motion.div>
                 <AnimatePresence>
                   {openDivIndex === 2 && (
@@ -423,43 +448,11 @@ export default function Home() {
                     >
                       <CustomSlider
                         images={[
-                          "/Opdracht-3a-min.png",
-                          "/Opdracht-3b-min.png",
-                          "/Opdracht-3c-min.png",
-                          "/Opdracht-3d-min.png",
-                        ]}
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              <div className="interactive-div group p-0 rounded-xl shadow-lg">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => toggleDiv(3)}
-                  className="div-header"
-                >
-                  <h2 className="text-left">SlipIn</h2>
-                </motion.div>
-                <AnimatePresence>
-                  {openDivIndex === 3 && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "fit-content", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="div-content"
-                    >
-                      <CustomSlider
-                        images={[
-                          "/Opdracht-4a-min.png",
-                          "/Opdracht-4b-min.png",
-                          "/Opdracht-4c-min.png",
-                          "/Opdracht-4d-min.png",
-                          "/Opdracht-4e-min.png",
-                          "/Opdracht-4f-min.png",
+                          "/freehand.png",
+                          "/Art-1-min.jpg",
+                          "/porto-illus-3.png",
+                          "/IMG_0157_resized_25percent.jpg",
+                          "/porto-illus-2.png",
                         ]}
                       />
                     </motion.div>
@@ -472,7 +465,7 @@ export default function Home() {
               variants={isHomeRefreshed ? itemVariants : undefined}
               className="bg-[#F6F3EE] p-6 rounded-2xl shadow-lg flex flex-col justify-between col-span-12 md:col-span-6 lg:col-span-4 row-span-2"
             >
-              <h4 className="text-[#076447] mt-auto">
+              <h4 className="text-[#076447] my-auto mt-3 ms-5">
                 Litttie brings stories to life with bold visuals, offering
                 creative solutions in graphic design and illustration—from
                 unique logos and branding to impactful designs for print and
@@ -497,18 +490,21 @@ export default function Home() {
                   </Link>
                 </motion.div>
               </div>
-              <h4 className="text-[#F6F3EE] mb-auto" style={{ marginTop: -30 }}>
+              <h4
+                className="text-[#F6F3EE] mb-auto ms-5"
+                style={{ marginTop: -30 }}
+              >
                 Questions?
               </h4>
-              <h1 className="text-[#EDCCE3] text-opacity-80 mt-auto">
+              <h1 className="text-[#EDCCE3] text-opacity-80 mt-auto ms-5">
                 CONTACT
               </h1>
             </motion.div>
             <motion.div
               variants={isHomeRefreshed ? itemVariants : undefined}
-              className="bg-[#F6F3EE] p-6 rounded-2xl shadow-lg col-span-12 md:col-span-6 lg:col-span-4 flex flex-col row-span-1"
+              className="bg-[#F6F3EE] p-2 rounded-2xl shadow-lg col-span-12 md:col-span-6 lg:col-span-4 flex flex-col row-span-1"
             >
-              <div className="flex justify-end items-center col-span-12">
+              <div className="flex justify-end col-span-12 my-auto">
                 {[
                   {
                     href: "/linkedin-icon.png",
@@ -537,7 +533,7 @@ export default function Home() {
                         alt={alt}
                         width={40}
                         height={40}
-                        className="object-cover"
+                        className="object-cover w-[8vw] md:w-[4vw]"
                       />
                     </motion.div>
                   </Link>
@@ -563,17 +559,17 @@ export default function Home() {
               >
                 {portfolioItems.map((item) => (
                   <SwiperSlide key={item.id}>
-                    <div className="grid grid-cols-24 grid-rows-6 gap-4 h-[90vh] w-[95%] mx-auto">
+                    <div className="grid grid-cols-24 grid-rows-6 gap-4 h-[86vh] w-[95%] mx-auto">
                       <div className="row-span-3 col-span-10 bg-[#F6F3EE] rounded-2xl shadow-lg">
-                        <div className="ms-[10%] mt-[5%] w-[75%]">
+                        <div className="ms-[10%] mt-[10%] w-[75%]">
                           <h1
-                            className="text-start p-3"
+                            className="text-start pb-3"
                             style={{ color: item.titleColor }}
                           >
                             {item.title}
                           </h1>
                           <h2
-                            className="text-start p-3 text-md"
+                            className="text-start"
                             style={{ color: item.descriptionColor }}
                           >
                             {item.description}
@@ -608,7 +604,7 @@ export default function Home() {
                           className="row-span-6 col-span-8 rounded-2xl shadow-lg"
                           style={{ backgroundColor: item.bgColor }}
                         >
-                          <h1 className="text-white whitespace-nowrap text-center py-[5%]">
+                          <h1 className="text-white whitespace-nowrap text-center py-[3.5%]">
                             {item.title2}
                           </h1>
                           {Array.isArray(item.description2) &&
@@ -725,38 +721,92 @@ export default function Home() {
           </div>
         )}
         {currentSection === "contact" && (
-          <div
-            id="contact"
-            className="p-5 bg-[#F6F3EE] rounded-2xl shadow-xl w-[90%] md:w-[50%] mx-auto"
-          >
-            <h2 className="text-[#076447] text-center text-2xl mb-4">
-              Contact
-            </h2>
-            <form className="flex flex-col space-y-4 mx-auto">
-              <input
-                type="text"
-                placeholder="Naam"
-                className="p-3 rounded-lg shadow-md"
-                required
-              />
-              <input
-                type="email"
-                placeholder="E-mailadres"
-                className="p-3 rounded-lg shadow-md"
-                required
-              />
-              <textarea
-                placeholder="Uw bericht"
-                className="p-3 rounded-lg shadow-md h-32"
-                required
-              ></textarea>
-              <button
-                type="submit"
-                className=" text-[#F6F3EE] bg-[#076447] p-3 rounded-lg shadow-md hover:bg-opacity-90"
+          <div className="min-h-screen md:min-h-[86vh] w-full flex flex-col md:flex-row gap-3">
+            <div className="flex flex-col gap-3 w-full md:w-[50%]">
+              <div className="p-5 bg-[#F6F3EE] rounded-2xl shadow-xl flex-grow">
+                <h1 className="text-[#F76F2A] text-start p-5">get in touch</h1>
+                <h2 className="text-[#076447] text-start p-5 w-[75%] text-xl">
+                  have a question or a project in mind? lets connect! whether
+                  you're interested in a custom logo, unique illustrations, or
+                  graphic design tailored to your needs, i'd love to hear from
+                  you
+                </h2>
+                <h2 className="text-[#076447] text-start p-5 w-[75%] text-xl">
+                  you can either fill out the contact form or email me directly
+                  at <span className="text-[#F76F2A]">contact@littie.nl</span>.
+                  i'll get back to you as soon as possible. let's create
+                  something amazing together!
+                </h2>
+              </div>
+              <div
+                className="bg-[#F6F3EE] p-2 rounded-2xl shadow-lg"
               >
-                Verstuur
-              </button>
-            </form>
+                <div className="flex justify-end col-span-12 my-auto">
+                  {[
+                    {
+                      href: "/linkedin-icon.png",
+                      link: "https://www.linkedin.com/in/lot-van-egdom?originalSubdomain=nl",
+                      alt: "LinkedIn",
+                    },
+                    {
+                      href: "/instagram-icon.png",
+                      link: "https://www.instagram.com/lot.is.egdom/",
+                      alt: "Instagram",
+                    },
+                  ].map(({ href, link, alt }) => (
+                    <Link
+                      key={link}
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <motion.div
+                        className="text-[#076447] px-2"
+                        whileHover={{ scale: 1.2, rotate: 10 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <Image
+                          src={href}
+                          alt={alt}
+                          width={40}
+                          height={40}
+                          className="object-cover w-[8vw] md:w-[4vw]"
+                        />
+                      </motion.div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="p-5 bg-[#F6F3EE] rounded-2xl shadow-xl w-full md:w-[50%]">
+              <h1 className="text-[#076447] text-center mb-4">Contact form</h1>
+              <form className="flex flex-col space-y-4 mx-auto">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  className="p-4 rounded-lg shadow-md h-20"
+                  required
+                />
+                <input
+                  type="email"
+                  placeholder="E-mail"
+                  className="p-4 rounded-lg shadow-md h-20"
+                  required
+                />
+                <textarea
+                  placeholder="Message"
+                  className="p-6 rounded-lg shadow-md h-40"
+                  required
+                ></textarea>
+                <button
+                  type="submit"
+                  className=" text-[#F6F3EE] bg-[#076447] p-3 rounded-lg shadow-md hover:bg-opacity-90"
+                >
+                  send
+                </button>
+              </form>
+            </div>
           </div>
         )}
       </div>

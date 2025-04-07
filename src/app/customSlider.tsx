@@ -31,7 +31,7 @@ const CustomSlider: React.FC<{ images: string[] }> = ({ images }) => {
                 src={src}
                 alt={`slide-${index}`}
                 layout="fill"
-                className="rounded-lg object-cover"
+                className="rounded-lg object-cover object-center"
               />
             </div>
           </div>

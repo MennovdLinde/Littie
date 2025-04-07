@@ -26,7 +26,7 @@ h6 {
 
 h1 {
   font-family: 'Kai';
-  font-size: 2.75rem;
+  font-size: 3vw;
   line-height: 1.2;
   transform: scaleY(1.1);
   letter-spacing: 0.025em;
@@ -40,7 +40,7 @@ h1 {
 
 h2 {
   font-family: 'Kai';
-  font-size: 1.4rem;
+  font-size: 3vh;
   line-height: 1.2;
   text-transform: uppercase;
   transform: scaleY(1.2);
