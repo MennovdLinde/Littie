@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronDown, ChevronUp } from "lucide-react";
 import { useEffect, useRef, useMemo, useState } from "react";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
@@ -27,7 +27,7 @@ export default function Home() {
   const [lotImagePosition, setLotImagePosition] = useState({ top: 0, left: 0 });
   const [currentSection, setCurrentSection] = useState("home");
   const [isHomeRefreshed, setIsHomeRefreshed] = useState(true);
-  const hasRunOnce = useRef(false); 
+  const hasRunOnce = useRef(false);
 
   const handleNavClick = (sectionId: string) => {
     setIsHomeRefreshed(false);
@@ -85,12 +85,11 @@ export default function Home() {
     } else {
       timeline.fromTo(
         mainImageRef.current,
-        { scale: 1.2, x: -50, y: 50, height: 350 },
+        { scale: 1.2, x: -50, y: 50 },
         {
           scale: 1,
           x: 0,
           y: 0,
-          height: "100%",
           duration: 1,
           ease: "expo.out",
           delay: 1,
@@ -130,7 +129,7 @@ export default function Home() {
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
-  
+
     if (currentSection === "home" && hasRunOnce.current) {
       timeoutId = setTimeout(() => {
         if (lotImageRef.current) {
@@ -140,13 +139,13 @@ export default function Home() {
             left: rect.left + window.scrollX,
           });
         }
-  
+
         setAnimationDone(true);
       }, 1000);
     }
-  
+
     return () => clearTimeout(timeoutId); // cleanup on unmount or rerun
-  }, [currentSection]);  
+  }, [currentSection]);
 
   const toggleDiv = (index: number) => {
     setOpenDivIndex(openDivIndex === index ? null : index); // Toggle div state
@@ -217,6 +216,7 @@ export default function Home() {
         "/porto-graph-1.webp",
         "/porto-graph-2.webp",
         "/porto-graph-3.webp",
+        "/porto-graph-1.webp",
       ],
     },
   ];
@@ -275,18 +275,16 @@ export default function Home() {
         {currentSection === "home" && (
           <div
             id="home"
-            className="min-h-screen md:min-h-[86vh] md:h-[86vh] grid grid-cols-12 gap-4"
+            className="min-h-screen md:min-h-[86vh] md:h-[86vh] grid grid-cols-12 grid-rows-none md:grid-rows-6 gap-4"
           >
             <motion.div
               variants={isHomeRefreshed ? itemVariants : undefined}
-              className="bg-[#F6F3EE] p-6 rounded-2xl shadow-lg col-span-12 md:col-span-6 lg:col-span-5 flex flex-col justify-evenly row-span-2"
+              className="bg-[#F6F3EE] p-7 rounded-2xl shadow-lg col-span-12 md:col-span-5 row-span-4"
             >
-              <div className="flex row">
-                <h1 className="p-0 md:p-5 text-[#076447]">
-                  Design that tells a story, illustrations that speak. <br></br>
-                  <span className="text-[#F76F2A]">Welcome to Litttie!</span>
-                </h1>
-              </div>
+              <h1 className="text-[#076447] text-start">
+                Design that tells a story, illustrations that speak. <br></br>
+                <span className="text-[#F76F2A]">Welcome to Litttie!</span>
+              </h1>
             </motion.div>
 
             {animationDone && (
@@ -301,7 +299,7 @@ export default function Home() {
 
             <div
               ref={mainImageRef}
-              className="bg-[#EDCCE3] bg-opacity-80 rounded-2xl shadow-lg flex items-end justify-center main_image col-span-12 md:col-span-5 lg:col-span-3 row-span-2"
+              className="bg-[#EDCCE3] bg-opacity-80 rounded-2xl shadow-lg flex items-end justify-center main_image col-span-12 md:col-span-3 row-span-4"
             >
               <div className="block md:hidden">
                 <Image
@@ -345,34 +343,24 @@ export default function Home() {
 
             <motion.div
               variants={isHomeRefreshed ? itemVariants : undefined}
-              className="bg-[#1A91D4] z-[3] p-4 rounded-2xl shadow-lg flex flex-col justify-evenly col-span-12 md:col-span-7 lg:col-span-4 row-span-3 h-[70vh] md:h-[auto] overflow-y-auto md:overflow-hidden"
+              className="bg-[#1A91D4] z-[3] p-7 rounded-2xl shadow-lg flex flex-col col-span-12 md:col-span-4 row-span-5 h-[70vh] md:h-[auto] overflow-y-auto md:overflow-hidden"
             >
-              <div className="flex justify-end">
+              <div className="flex justify-between">
+                <h1 className="text-[#F6F3EE] ps-2 mb-3">Portofolio</h1>
                 <motion.div
                   whileHover={{ scale: 1.2, rotate: 20 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => handleNavClick("portofolio")}
                 >
                   <ArrowUpRight
-                    className="mb-2 text-[#F6F3EE] cursor-pointer"
+                    className="text-[#F6F3EE] cursor-pointer"
                     size={30}
                   />
                 </motion.div>
               </div>
-              <h1
-                className="text-[#F6F3EE] ms-1 w-10"
-                style={{ marginTop: -30 }}
-              >
-                Portofolio
-              </h1>
-              <div className="interactive-div group p-0 rounded-xl shadow-lg">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => toggleDiv(0)}
-                  className="div-header"
-                >
-                  <h2 className="text-left">Graphic design</h2>
+              <div className="interactive-div group mb-5 rounded-xl shadow-lg">
+                <motion.div onClick={() => toggleDiv(0)} className="py-5">
+                  <h2 className="text-start text-2xl ps-2">Graphic design</h2>
                 </motion.div>
                 <AnimatePresence>
                   {openDivIndex === 0 && (
@@ -397,14 +385,9 @@ export default function Home() {
                 </AnimatePresence>
               </div>
 
-              <div className="interactive-div group p-0 rounded-xl shadow-lg">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => toggleDiv(1)}
-                  className="div-header"
-                >
-                  <h2 className="text-left">Logo design</h2>
+              <div className="interactive-div group mb-5 rounded-xl shadow-lg">
+                <motion.div onClick={() => toggleDiv(1)} className="py-5">
+                  <h2 className="text-start text-2xl ps-2">Logo design</h2>
                 </motion.div>
                 <AnimatePresence>
                   {openDivIndex === 1 && (
@@ -428,14 +411,9 @@ export default function Home() {
                 </AnimatePresence>
               </div>
 
-              <div className="interactive-div group p-0 rounded-xl shadow-lg">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => toggleDiv(2)}
-                  className="div-header"
-                >
-                  <h2 className="text-left">Illustrations</h2>
+              <div className="interactive-div group mb-5 rounded-xl shadow-lg">
+                <motion.div onClick={() => toggleDiv(2)} className="py-5">
+                  <h2 className="text-start text-2xl ps-2">Illustrations</h2>
                 </motion.div>
                 <AnimatePresence>
                   {openDivIndex === 2 && (
@@ -463,9 +441,9 @@ export default function Home() {
 
             <motion.div
               variants={isHomeRefreshed ? itemVariants : undefined}
-              className="bg-[#F6F3EE] p-6 rounded-2xl shadow-lg flex flex-col justify-between col-span-12 md:col-span-6 lg:col-span-4 row-span-2"
+              className="bg-[#F6F3EE] p-7 rounded-2xl shadow-lg flex flex-col col-span-12 md:col-span-4 row-span-2"
             >
-              <h4 className="text-[#076447] my-auto mt-3 ms-5">
+              <h4 className="text-[#076447] text-start">
                 Litttie brings stories to life with bold visuals, offering
                 creative solutions in graphic design and illustration—from
                 unique logos and branding to impactful designs for print and
@@ -475,36 +453,30 @@ export default function Home() {
 
             <motion.div
               variants={isHomeRefreshed ? itemVariants : undefined}
-              className="bg-[#076447] p-6 rounded-2xl shadow-lg col-span-12 md:col-span-6 lg:col-span-4 flex flex-col justify-between row-span-2"
+              className="bg-[#076447] p-7 rounded-2xl shadow-lg col-span-12 md:col-span-4 flex flex-col justify-between row-span-2"
             >
-              <div className="flex justify-end">
+              <div className="flex justify-between">
+                <h4 className="text-[#F6F3EE]">Questions?</h4>
                 <motion.div
                   whileHover={{ scale: 1.2, rotate: 20 }}
                   whileTap={{ scale: 0.9 }}
                 >
                   <Link href="mailto:lot@vanegdom.net">
                     <ArrowUpRight
-                      className="mb-2 text-[#F6F3EE] cursor-pointer"
+                      className="text-[#F6F3EE] cursor-pointer"
                       size={30}
                     />
                   </Link>
                 </motion.div>
               </div>
-              <h4
-                className="text-[#F6F3EE] mb-auto ms-5"
-                style={{ marginTop: -30 }}
-              >
-                Questions?
-              </h4>
-              <h1 className="text-[#EDCCE3] text-opacity-80 mt-auto ms-5">
-                CONTACT
-              </h1>
+
+              <h1 className="text-[#EDCCE3] text-opacity-80">CONTACT</h1>
             </motion.div>
             <motion.div
               variants={isHomeRefreshed ? itemVariants : undefined}
-              className="bg-[#F6F3EE] p-2 rounded-2xl shadow-lg col-span-12 md:col-span-6 lg:col-span-4 flex flex-col row-span-1"
+              className="bg-[#F6F3EE] px-7 py-3 rounded-2xl shadow-lg col-span-12 md:col-span-6 lg:col-span-4 flex flex-col row-span-1"
             >
-              <div className="flex justify-end col-span-12 my-auto">
+              <div className="flex justify-end gap-3 my-auto">
                 {[
                   {
                     href: "/linkedin-icon.png",
@@ -524,7 +496,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                   >
                     <motion.div
-                      className="text-[#076447] px-2"
+                      className="text-[#076447]"
                       whileHover={{ scale: 1.2, rotate: 10 }}
                       whileTap={{ scale: 0.9 }}
                     >
@@ -533,7 +505,7 @@ export default function Home() {
                         alt={alt}
                         width={40}
                         height={40}
-                        className="object-cover w-[8vw] md:w-[4vw]"
+                        className="object-cover w-[12vw] md:w-[3vw]"
                       />
                     </motion.div>
                   </Link>
@@ -561,7 +533,7 @@ export default function Home() {
                   <SwiperSlide key={item.id}>
                     <div className="grid grid-cols-24 grid-rows-6 gap-4 h-[86vh] w-[95%] mx-auto">
                       <div className="row-span-3 col-span-10 bg-[#F6F3EE] rounded-2xl shadow-lg">
-                        <div className="ms-[10%] mt-[10%] w-[75%]">
+                        <div className="p-10">
                           <h1
                             className="text-start pb-3"
                             style={{ color: item.titleColor }}
@@ -687,36 +659,118 @@ export default function Home() {
               </button>
             </div>
             <div className="flex flex-col gap-5 w-full md:hidden">
-              {portfolioItems.map((item) => (
-                <div
-                  key={item.id}
-                  className="rounded-lg shadow-lg bg-[#F6F3EE] flex flex-col items-center justify-center p-5"
-                >
-                  <h2
-                    className="whitespace-nowrap text-center p-2"
-                    style={{ color: item.titleColor }}
-                  >
-                    {item.title}
-                  </h2>
+              {portfolioItems.map((item, index) => {
+                const isOpen = openDivIndex === index;
 
-                  <div className="flex flex-row gap-5">
-                    {item.images.slice(0, 2).map((img, imgIndex) => (
-                      <Image
-                        key={imgIndex}
-                        src={img}
-                        width={120}
-                        height={120}
-                        alt={`${item.title} ${imgIndex + 1}`}
-                        className="object-cover rounded-lg shadow-lg"
-                      />
-                    ))}
-                  </div>
+                return (
+                  <div key={item.id}>
+                    <motion.div
+                      className="rounded-lg shadow-lg bg-[#F6F3EE] flex flex-col p-7 cursor-pointer"
+                      onClick={() => toggleDiv(index)}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <div className="flex flex-row justify-between items-center">
+                        <h2
+                          className="whitespace-nowrap text-start pb-3"
+                          style={{ color: item.titleColor }}
+                        >
+                          {item.title}
+                        </h2>
+                        {isOpen ? (
+                          <ChevronUp
+                            size={30}
+                            style={{ color: item.titleColor }}
+                          />
+                        ) : (
+                          <ChevronDown
+                            size={30}
+                            style={{ color: item.titleColor }}
+                          />
+                        )}
+                      </div>
 
-                  <div className="p-3" style={{ color: item.titleColor }}>
-                    <h5 className="text-left">{item.description}</h5>
+                      <h5 className="text-start text-black">
+                        {item.description}
+                      </h5>
+                    </motion.div>
+
+                    <AnimatePresence>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.4 }}
+                          className="overflow-hidden mt-3 flex flex-col"
+                        >
+                          {item.images && item.images.length >= 4 && (
+                            <div className="flex flex-row gap-3">
+                              {[item.images[0], item.images[3]].map(
+                                (img, idx) => (
+                                  <Image
+                                    key={`top-${idx}`}
+                                    src={img}
+                                    alt={`Top image ${idx}`}
+                                    width={100}
+                                    height={100}
+                                    className="rounded-lg w-[50%] shadow-lg object-cover"
+                                  />
+                                )
+                              )}
+                            </div>
+                          )}
+
+                          {/* Optional: process steps */}
+                          {item.description2 &&
+                            Array.isArray(item.description2) && (
+                              <div
+                                className="p-5 mt-3 rounded-lg shadow-lg"
+                                style={{ backgroundColor: item.bgColor }}
+                              >
+                                {item.description2.map((text, idx) => {
+                                  const isTitle = idx % 2 === 0;
+                                  return isTitle ? (
+                                    <h4
+                                      key={idx}
+                                      className="uppercase font-semibold text-white"
+                                    >
+                                      {text}
+                                    </h4>
+                                  ) : (
+                                    <p
+                                      key={idx}
+                                      className="text-white text-sm pl-4 mb-2 leading-relaxed"
+                                    >
+                                      {text}
+                                    </p>
+                                  );
+                                })}
+                              </div>
+                            )}
+
+                          {/* Bottom: images 2 and 3 (index 1 and 2) */}
+                          {item.images && item.images.length >= 3 && (
+                            <div className="flex flex-row gap-3 mt-3">
+                              {[item.images[1], item.images[2]].map(
+                                (img, idx) => (
+                                  <Image
+                                    key={`bottom-${idx}`}
+                                    src={img}
+                                    alt={`Bottom image ${idx}`}
+                                    width={100}
+                                    height={100}
+                                    className="rounded-lg w-[50%] shadow-lg object-cover"
+                                  />
+                                )
+                              )}
+                            </div>
+                          )}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
@@ -725,7 +779,7 @@ export default function Home() {
             <div className="flex flex-col gap-3 w-full md:w-[50%]">
               <div className="p-5 bg-[#F6F3EE] rounded-2xl shadow-xl flex-grow">
                 <h1 className="text-[#F76F2A] text-start p-5">get in touch</h1>
-                <h2 className="text-[#076447] text-start p-5 text-xl">
+                <h2 className="text-[#076447] text-start p-5 text-xl mb-5">
                   have a question or a project in mind? lets connect! whether
                   you&#39;re interested in a custom logo, unique illustrations,
                   or graphic design tailored to your needs, i&#39;d love to hear
@@ -738,8 +792,8 @@ export default function Home() {
                   something amazing together!
                 </h2>
               </div>
-              <div className="bg-[#F6F3EE] p-2 rounded-2xl shadow-lg">
-                <div className="flex justify-end col-span-12 my-auto">
+              <div className="bg-[#F6F3EE] px-7 py-3 rounded-2xl shadow-lg">
+                <div className="flex justify-end gap-3 my-auto">
                   {[
                     {
                       href: "/linkedin-icon.png",
@@ -759,7 +813,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                     >
                       <motion.div
-                        className="text-[#076447] px-2"
+                        className="text-[#076447]"
                         whileHover={{ scale: 1.2, rotate: 10 }}
                         whileTap={{ scale: 0.9 }}
                       >
@@ -768,7 +822,7 @@ export default function Home() {
                           alt={alt}
                           width={40}
                           height={40}
-                          className="object-cover w-[8vw] md:w-[4vw]"
+                          className="object-cover w-[12vw] md:w-[3vw]"
                         />
                       </motion.div>
                     </Link>
