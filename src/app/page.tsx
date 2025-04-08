@@ -20,6 +20,7 @@ export default function Home() {
   const scrollRef = useRef(null);
   const controls = useAnimation();
   const [openDivIndex, setOpenDivIndex] = useState<number | null>(0);
+  const [openPortfolioIndex, setOpenPortfolioIndex] = useState<number | null>(null);
   const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(
     null
   );
@@ -149,6 +150,10 @@ export default function Home() {
 
   const toggleDiv = (index: number) => {
     setOpenDivIndex(openDivIndex === index ? null : index); // Toggle div state
+  };
+
+  const togglePortfolioDiv = (index: number) => {
+    setOpenPortfolioIndex(openPortfolioIndex === index ? null : index);
   };
 
   const portfolioItems = [
@@ -660,13 +665,13 @@ export default function Home() {
             </div>
             <div className="flex flex-col gap-5 w-full md:hidden">
               {portfolioItems.map((item, index) => {
-                const isOpen = openDivIndex === index;
+                const isOpen = openPortfolioIndex === index;
 
                 return (
                   <div key={item.id}>
                     <motion.div
                       className="rounded-lg shadow-lg bg-[#F6F3EE] flex flex-col p-7 cursor-pointer"
-                      onClick={() => toggleDiv(index)}
+                      onClick={() => togglePortfolioDiv(index)}
                       whileTap={{ scale: 0.98 }}
                     >
                       <div className="flex flex-row justify-between items-center">
